@@ -1,0 +1,3719 @@
+<!doctype html>
+<html>
+  <head><script src="/assets/somossistem-enhancer.js"></script>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="./support.js"></script>
+  </head>
+  <body>
+    <x-dc>
+      <helmet>
+        <title>igex — toda a sua igreja, num só lugar</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta
+          name="description"
+          content="Kids, escala, finanças, social e comunicação — conversando entre si. A tecnologia da igreja, nascida dentro da igreja."
+        />
+        <meta name="theme-color" content="#DFF500" />
+        <meta
+          property="og:title"
+          content="igex — toda a sua igreja, num só lugar"
+        />
+        <meta
+          property="og:description"
+          content="Kids, escala, finanças, social e comunicação — conversando entre si. A tecnologia da igreja, nascida dentro da igreja."
+        />
+        <meta property="og:image" content="assets/og-card.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="pt_BR" />
+        <link rel="icon" type="image/png" href="assets/favicon.png" />
+        <link
+          rel="preload"
+          href="fonts/NeueHaasDisplayRoman.ttf"
+          as="font"
+          type="font/ttf"
+          crossorigin="anonymous"
+        />
+        <link
+          rel="preload"
+          href="fonts/NeueHaasDisplayBold.ttf"
+          as="font"
+          type="font/ttf"
+          crossorigin="anonymous"
+        />
+        <style>
+          @font-face {
+            font-family: "Neue Haas Display";
+            src: url("./fonts/NeueHaasDisplayRoman.ttf") format("truetype");
+            font-weight: 400;
+            font-style: normal;
+            font-display: swap;
+          }
+          @font-face {
+            font-family: "Neue Haas Display";
+            src: url("./fonts/NeueHaasDisplayBold.ttf") format("truetype");
+            font-weight: 700;
+            font-style: normal;
+            font-display: swap;
+          }
+          html,
+          body {
+            margin: 0;
+            padding: 0;
+            background: #fafaf7;
+            overflow-x: clip;
+          }
+          * {
+            box-sizing: border-box;
+          }
+          ::selection {
+            background: #dff500;
+            color: #1e1e1e;
+          }
+          input::placeholder {
+            color: rgba(250, 250, 247, 0.35);
+          }
+          image-slot {
+            display: block;
+            width: 100%;
+            height: 100%;
+          }
+          a {
+            color: inherit;
+          }
+          a:hover {
+            color: inherit;
+          }
+          a:focus-visible,
+          button:focus-visible {
+            outline: 3px solid #BF1744;
+            outline-offset: 3px;
+          }
+          @keyframes igexPulse {
+            0%,
+            100% {
+              transform: scale(1);
+              opacity: 1;
+            }
+            50% {
+              transform: scale(1.35);
+              opacity: 0.55;
+            }
+          }
+          @keyframes igexMarquee {
+            to {
+              transform: translateX(-50%);
+            }
+          }
+          @keyframes igexFadeIn {
+            from {
+              opacity: 0;
+              transform: translateY(8px);
+            }
+            to {
+              opacity: 1;
+              transform: none;
+            }
+          }
+          @media (max-width: 899px) {
+            [data-vert-eyebrow] {
+              display: none !important;
+            }
+          }
+          @media (max-width: 899px) {
+            [data-hero-glyph] {
+              width: 74vw !important;
+              top: -18vw !important;
+              right: -20vw !important;
+              left: auto !important;
+            }
+            [data-hero] {
+              padding-top: max(220px, 48vw) !important;
+            }
+            #int-track[data-compact] [data-mod-note] {
+              display: none !important;
+            }
+            #int-track[data-compact] [data-int-status] {
+              display: block !important;
+            }
+            [data-int-h2] {
+              font-size: 26px !important;
+            }
+          }
+          @media (max-height: 560px) {
+            [data-mod-word] {
+              font-size: clamp(26px, 5.5vh, 44px) !important;
+            }
+          }
+          @media (max-width: 479px) {
+            [style*="10px 10px 0"] {
+              box-shadow: 6px 6px 0 #1e1e1e !important;
+            }
+            [style*="8px 8px 0 #1E1E1E"] {
+              box-shadow: 6px 6px 0 #1e1e1e !important;
+            }
+            [style*="8px 8px 0 #BF1744"] {
+              box-shadow: 6px 6px 0 #BF1744 !important;
+            }
+            [data-wm-suffix] {
+              display: none !important;
+            }
+            [data-header-disc] {
+              display: none !important;
+            }
+            [data-header-cta] {
+              padding: 12px 16px !important;
+            }
+            [data-client-full] {
+              display: none !important;
+            }
+            [data-client-short] {
+              display: inline !important;
+            }
+          }
+          @supports (height: 100svh) {
+            [data-hero] {
+              min-height: calc(100svh - 60px) !important;
+            }
+            [data-int-sticky] {
+              min-height: 100svh !important;
+            }
+            [data-manifesto] {
+              min-height: 92svh !important;
+            }
+          }
+          @media (min-width: 900px) {
+            [data-eyebrow-sm] {
+              display: none !important;
+            }
+          }
+          @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+              animation-duration: 0ms !important;
+              transition-duration: 0ms !important;
+            }
+          }
+        </style>
+      </helmet>
+
+      <div
+        style="
+          font-family: &quot;Neue Haas Display&quot;, system-ui, sans-serif;
+          color: #1e1e1e;
+          background: #fafaf7;
+          -webkit-font-smoothing: antialiased;
+        "
+      >
+        <!-- ══════════ HEADER ══════════ -->
+        <header
+          style="
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background: #fafaf7;
+            border-bottom: 1px solid #1e1e1e;
+          "
+        >
+          <div
+            style="
+              max-width: 1280px;
+              margin: 0 auto;
+              padding: 14px 24px;
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              gap: 16px;
+            "
+          >
+            <div style="display: flex; align-items: center; gap: 10px">
+              <img
+                src="assets/logo-symbol-ink.png"
+                alt="igex"
+                style="height: 30px; width: auto; display: block"
+              />
+              <span
+                style="
+                  font-weight: 700;
+                  font-size: 18px;
+                  letter-spacing: -0.02em;
+                  white-space: nowrap;
+                  flex-shrink: 0;
+                "
+                >igex<span
+                  data-wm-suffix=""
+                  style="font-weight: 400; color: #6b6b66"
+                >
+                  tecnologia</span
+                ></span
+              >
+            </div>
+            <div
+              style="
+                display: flex;
+                align-items: center;
+                gap: clamp(8px, 2vw, 24px);
+              "
+            >
+              <a
+                href="https://painel.somossistem.com"
+                target="_blank"
+                rel="noopener"
+                data-client-link=""
+                style="
+                  display: inline-flex;
+                  align-items: center;
+                  min-height: 44px;
+                  padding: 12px 8px;
+                  font-weight: 700;
+                  font-size: 14px;
+                  color: #1e1e1e;
+                  text-decoration: none;
+                  white-space: nowrap;
+                  opacity: 0.75;
+                  transition: opacity 180ms;
+                "
+                style-hover="opacity: 1; text-decoration: underline; text-underline-offset: 4px"
+                ><span data-client-full="">já sou cliente</span
+                ><span data-client-short="" style="display: none"
+                  >entrar</span
+                ></a
+              >
+              <a
+                href="{{ waLink }}"
+                target="_blank"
+                rel="noopener"
+                onClick="{{ fireLead }}"
+                data-header-cta=""
+                style="
+                  display: inline-flex;
+                  align-items: center;
+                  gap: 10px;
+                  background: #1e1e1e;
+                  color: #fafaf7;
+                  text-decoration: none;
+                  font-weight: 700;
+                  font-size: 14px;
+                  padding: 12px 20px;
+                  border-radius: 999px;
+                  min-height: 44px;
+                  transition:
+                    transform 180ms cubic-bezier(0.16, 1, 0.3, 1),
+                    background 180ms,
+                    gap 180ms cubic-bezier(0.16, 1, 0.3, 1);
+                "
+                style-hover="transform: translateY(-2px); background: #000000; gap: 14px"
+                style-active="transform: none; background: #000000"
+                >falar com a igex<span
+                  aria-hidden="true"
+                  data-header-disc=""
+                  style="
+                    display: inline-flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 22px;
+                    height: 22px;
+                    border-radius: 999px;
+                    background: #dff500;
+                    color: #1e1e1e;
+                    font-weight: 700;
+                    font-size: 13px;
+                  "
+                  >→</span
+                ></a
+              >
+            </div>
+          </div>
+        </header>
+
+        <!-- ══════════ 1 · HERO — lime ══════════ -->
+        <section
+          data-screen-label="01 Hero"
+          data-hero=""
+          style="
+            background: #dff500;
+            min-height: calc(100vh - 60px);
+            display: flex;
+            align-items: flex-end;
+            position: relative;
+            overflow: hidden;
+            padding: clamp(220px, 30vw, 360px) 24px clamp(72px, 9vw, 120px);
+          "
+        >
+          <img
+            src="assets/e-glyph.png"
+            alt=""
+            aria-hidden="true"
+            data-hero-glyph=""
+            style="
+              position: absolute;
+              transform: rotate(-8deg);
+              pointer-events: none;
+              user-select: none;
+              left: 719px;
+              top: -120px;
+            "
+          />
+
+          <div
+            style="
+              max-width: 1280px;
+              margin: 0 auto;
+              width: 100%;
+              position: relative;
+              z-index: 1;
+            "
+          >
+            <div data-reveal="1">
+              <h1
+                style="
+                  margin: 0;
+                  font-weight: 700;
+                  font-size: clamp(52px, 10.5vw, 168px);
+                  line-height: 0.92;
+                  letter-spacing: -0.03em;
+                  text-wrap: balance;
+                "
+              >
+                toda a sua igreja.<br />em um só lugar.
+              </h1>
+            </div>
+            <div
+              data-reveal="2"
+              style="
+                margin-top: clamp(32px, 4vw, 56px);
+                display: flex;
+                flex-wrap: wrap;
+                align-items: baseline;
+                column-gap: 14px;
+                row-gap: 6px;
+                font-size: clamp(17px, 2vw, 24px);
+                line-height: 1.4;
+                max-width: 720px;
+              "
+            >
+              <span>Kids.</span><span>Escala.</span><span>Finanças.</span
+              ><span>Social.</span><span>Comunicação.</span
+              ><span style="font-weight: 700"
+                >Tudo que sua igreja precisa.</span
+              >
+            </div>
+            <div
+              data-reveal="3"
+              style="
+                margin-top: clamp(40px, 5vw, 72px);
+                display: flex;
+                flex-wrap: wrap;
+                gap: 16px;
+              "
+            >
+              <a
+                href="{{ waLink }}"
+                target="_blank"
+                rel="noopener"
+                onClick="{{ fireLead }}"
+                style="
+                  display: inline-flex;
+                  align-items: center;
+                  gap: 12px;
+                  background: #1e1e1e;
+                  color: #fafaf7;
+                  text-decoration: none;
+                  font-weight: 700;
+                  font-size: 17px;
+                  padding: 18px 30px;
+                  border-radius: 999px;
+                  min-height: 44px;
+                  transition:
+                    transform 180ms cubic-bezier(0.16, 1, 0.3, 1),
+                    background 180ms,
+                    gap 180ms cubic-bezier(0.16, 1, 0.3, 1);
+                "
+                style-hover="transform: translateY(-2px); background: #000000; gap: 16px"
+                style-active="transform: none; background: #000000"
+                >falar com a igex<span
+                  aria-hidden="true"
+                  style="
+                    display: inline-flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 26px;
+                    height: 26px;
+                    border-radius: 999px;
+                    background: #dff500;
+                    color: #1e1e1e;
+                    font-size: 15px;
+                    transition: transform 180ms cubic-bezier(0.16, 1, 0.3, 1);
+                  "
+                  >→</span
+                ></a
+              >
+              <a
+                href="#integracao"
+                onClick="{{ scrollToIntegracao }}"
+                style="
+                  display: inline-flex;
+                  align-items: center;
+                  gap: 10px;
+                  background: transparent;
+                  color: #1e1e1e;
+                  text-decoration: none;
+                  font-weight: 700;
+                  font-size: 17px;
+                  padding: 18px 26px;
+                  border-radius: 999px;
+                  border: 1px solid #1e1e1e;
+                  min-height: 44px;
+                  transition: padding-right 180ms cubic-bezier(0.16, 1, 0.3, 1);
+                "
+                style-hover="padding-right: 34px"
+                >ver por dentro <span aria-hidden="true">↓</span></a
+              >
+            </div>
+          </div>
+        </section>
+
+        <!-- ══════════ 2 · INTEGRAÇÃO — ink · tela-assinatura ══════════ -->
+        <section
+          id="integracao"
+          data-screen-label="02 Integração"
+          style="background: #1e1e1e; color: #fafaf7; position: relative"
+        >
+          <div
+            aria-hidden="true"
+            data-rotate-scroll=""
+            style="
+              position: absolute;
+              top: -46px;
+              right: clamp(24px, 10vw, 140px);
+              width: 92px;
+              height: 92px;
+              -webkit-mask-image: url(&quot;assets/logo-symbol-ink.png&quot;);
+              mask-image: url(&quot;assets/logo-symbol-ink.png&quot;);
+              -webkit-mask-size: contain;
+              mask-size: contain;
+              -webkit-mask-repeat: no-repeat;
+              mask-repeat: no-repeat;
+              background: #BF1744;
+              pointer-events: none;
+              z-index: 2;
+            "
+          ></div>
+          <div id="int-track">
+            <div
+              data-int-sticky=""
+              style="
+                position: sticky;
+                top: 0;
+                min-height: 100vh;
+                display: flex;
+                align-items: center;
+                padding: clamp(64px, 8vw, 100px) 24px;
+              "
+            >
+              <div
+                style="
+                  max-width: 1280px;
+                  margin: 0 auto;
+                  width: 100%;
+                  display: grid;
+                  grid-template-columns: repeat(
+                    auto-fit,
+                    minmax(min(100%, 380px), 1fr)
+                  );
+                  gap: clamp(36px, 5vw, 80px);
+                  align-items: center;
+                "
+              >
+                <div data-reveal="1">
+                  <p
+                    style="
+                      margin: 0;
+                      font-size: 12px;
+                      text-transform: uppercase;
+                      letter-spacing: 0.18em;
+                      color: #BF1744;
+                    "
+                  >
+                    Um só corpo
+                  </p>
+                  <h2
+                    data-int-h2=""
+                    style="
+                      margin: 24px 0 0;
+                      font-weight: 700;
+                      font-size: clamp(34px, 3.6vw, 56px);
+                      line-height: 1;
+                      letter-spacing: -0.03em;
+                      color: #fafaf7;
+                      text-wrap: balance;
+                      position: relative;
+                    "
+                  >
+                    tudo o que sua igreja precisa, agora em um só lugar.
+                  </h2>
+                </div>
+                <div
+                  data-reveal="2"
+                  style="
+                    display: flex;
+                    flex-direction: column;
+                    gap: clamp(8px, 1.4vh, 16px);
+                  "
+                >
+                  <div
+                    data-mod=""
+                    style="
+                      display: flex;
+                      align-items: baseline;
+                      gap: clamp(12px, 1.6vw, 22px);
+                      flex-wrap: wrap;
+                    "
+                  >
+                    <span
+                      data-mod-word=""
+                      style="
+                        font-weight: 700;
+                        font-size: clamp(36px, min(5.2vw, 7vh), 72px);
+                        line-height: 1;
+                        letter-spacing: -0.03em;
+                        color: #fafaf7;
+                        transition: color 420ms cubic-bezier(0.16, 1, 0.3, 1);
+                      "
+                      >kids.</span
+                    >
+                    <span
+                      data-mod-note=""
+                      style="
+                        font-size: clamp(13px, 1.1vw, 16px);
+                        color: #BF1744;
+                        transition:
+                          opacity 420ms cubic-bezier(0.16, 1, 0.3, 1),
+                          transform 420ms cubic-bezier(0.16, 1, 0.3, 1);
+                      "
+                      >check-in avisa o painel do pastor</span
+                    >
+                  </div>
+                  <div
+                    data-mod=""
+                    style="
+                      display: flex;
+                      align-items: baseline;
+                      gap: clamp(12px, 1.6vw, 22px);
+                      flex-wrap: wrap;
+                    "
+                  >
+                    <span
+                      data-mod-word=""
+                      style="
+                        font-weight: 700;
+                        font-size: clamp(36px, min(5.2vw, 7vh), 72px);
+                        line-height: 1;
+                        letter-spacing: -0.03em;
+                        color: #fafaf7;
+                        transition: color 420ms cubic-bezier(0.16, 1, 0.3, 1);
+                      "
+                      >escala.</span
+                    >
+                    <span
+                      data-mod-note=""
+                      style="
+                        font-size: clamp(13px, 1.1vw, 16px);
+                        color: #BF1744;
+                        transition:
+                          opacity 420ms cubic-bezier(0.16, 1, 0.3, 1),
+                          transform 420ms cubic-bezier(0.16, 1, 0.3, 1);
+                      "
+                      >o voluntário já sabe onde serve</span
+                    >
+                  </div>
+                  <div
+                    data-mod=""
+                    style="
+                      display: flex;
+                      align-items: baseline;
+                      gap: clamp(12px, 1.6vw, 22px);
+                      flex-wrap: wrap;
+                    "
+                  >
+                    <span
+                      data-mod-word=""
+                      style="
+                        font-weight: 700;
+                        font-size: clamp(36px, min(5.2vw, 7vh), 72px);
+                        line-height: 1;
+                        letter-spacing: -0.03em;
+                        color: #fafaf7;
+                        transition: color 420ms cubic-bezier(0.16, 1, 0.3, 1);
+                      "
+                      >finanças.</span
+                    >
+                    <span
+                      data-mod-note=""
+                      style="
+                        font-size: clamp(13px, 1.1vw, 16px);
+                        color: #BF1744;
+                        transition:
+                          opacity 420ms cubic-bezier(0.16, 1, 0.3, 1),
+                          transform 420ms cubic-bezier(0.16, 1, 0.3, 1);
+                      "
+                      >cada centavo com registro</span
+                    >
+                  </div>
+                  <div
+                    data-mod=""
+                    style="
+                      display: flex;
+                      align-items: baseline;
+                      gap: clamp(12px, 1.6vw, 22px);
+                      flex-wrap: wrap;
+                    "
+                  >
+                    <span
+                      data-mod-word=""
+                      style="
+                        font-weight: 700;
+                        font-size: clamp(36px, min(5.2vw, 7vh), 72px);
+                        line-height: 1;
+                        letter-spacing: -0.03em;
+                        color: #fafaf7;
+                        transition: color 420ms cubic-bezier(0.16, 1, 0.3, 1);
+                      "
+                      >social.</span
+                    >
+                    <span
+                      data-mod-note=""
+                      style="
+                        font-size: clamp(13px, 1.1vw, 16px);
+                        color: #BF1744;
+                        transition:
+                          opacity 420ms cubic-bezier(0.16, 1, 0.3, 1),
+                          transform 420ms cubic-bezier(0.16, 1, 0.3, 1);
+                      "
+                      >cada entrega vira história da família</span
+                    >
+                  </div>
+                  <div
+                    data-mod=""
+                    style="
+                      display: flex;
+                      align-items: baseline;
+                      gap: clamp(12px, 1.6vw, 22px);
+                      flex-wrap: wrap;
+                    "
+                  >
+                    <span
+                      data-mod-word=""
+                      style="
+                        font-weight: 700;
+                        font-size: clamp(36px, min(5.2vw, 7vh), 72px);
+                        line-height: 1;
+                        letter-spacing: -0.03em;
+                        color: #fafaf7;
+                        transition: color 420ms cubic-bezier(0.16, 1, 0.3, 1);
+                      "
+                      >membros.</span
+                    >
+                    <span
+                      data-mod-note=""
+                      style="
+                        font-size: clamp(13px, 1.1vw, 16px);
+                        color: #BF1744;
+                        transition:
+                          opacity 420ms cubic-bezier(0.16, 1, 0.3, 1),
+                          transform 420ms cubic-bezier(0.16, 1, 0.3, 1);
+                      "
+                      >nenhum visitante esquecido</span
+                    >
+                  </div>
+                  <div
+                    data-mod=""
+                    style="
+                      display: flex;
+                      align-items: baseline;
+                      gap: clamp(12px, 1.6vw, 22px);
+                      flex-wrap: wrap;
+                    "
+                  >
+                    <span
+                      data-mod-word=""
+                      style="
+                        font-weight: 700;
+                        font-size: clamp(36px, min(5.2vw, 7vh), 72px);
+                        line-height: 1;
+                        letter-spacing: -0.03em;
+                        color: #fafaf7;
+                        transition: color 420ms cubic-bezier(0.16, 1, 0.3, 1);
+                      "
+                      >comunicação.</span
+                    >
+                    <span
+                      data-mod-note=""
+                      style="
+                        font-size: clamp(13px, 1.1vw, 16px);
+                        color: #BF1744;
+                        transition:
+                          opacity 420ms cubic-bezier(0.16, 1, 0.3, 1),
+                          transform 420ms cubic-bezier(0.16, 1, 0.3, 1);
+                      "
+                      >a palavra chega em todo mundo</span
+                    >
+                  </div>
+                  <p
+                    data-int-status=""
+                    style="
+                      display: none;
+                      margin: 10px 0 0;
+                      min-height: 20px;
+                      font-size: 14px;
+                      line-height: 1.4;
+                      color: #BF1744;
+                    "
+                  ></p>
+                </div>
+                <div
+                  id="int-ato2"
+                  style="
+                    grid-column: 1 / -1;
+                    padding-top: clamp(28px, 4vw, 56px);
+                  "
+                >
+                  <p
+                    style="
+                      margin: 0 auto;
+                      text-align: center;
+                      font-weight: 700;
+                      font-size: clamp(40px, 7vw, 110px);
+                      line-height: 1;
+                      letter-spacing: -0.03em;
+                      color: #fafaf7;
+                      text-wrap: balance;
+                      max-width: 13ch;
+                    "
+                  >
+                    <span id="int-l1" style="display: block"
+                      >sozinhos, são ferramentas.</span
+                    >
+                    <span id="int-l2" style="display: block; margin-top: 0.4em"
+                      >juntos, são
+                      <span style="color: #dff500">a sua igreja.</span></span
+                    >
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ══════════ MANIFESTO A — paper ══════════ -->
+        <section
+          data-screen-label="Manifesto — completo não é complicado"
+          aria-label="manifesto"
+          data-manifesto=""
+          style="
+            background: #fafaf7;
+            min-height: 92vh;
+            display: flex;
+            align-items: center;
+            padding: clamp(80px, 12vw, 140px) 0;
+            position: relative;
+            overflow: clip;
+          "
+        >
+          <div
+            aria-hidden="true"
+            style="
+              position: absolute;
+              right: -16vw;
+              bottom: -14vw;
+              width: 58vw;
+              min-width: 400px;
+              aspect-ratio: 744/580;
+              -webkit-mask-image: url(&quot;assets/e-glyph.png&quot;);
+              mask-image: url(&quot;assets/e-glyph.png&quot;);
+              -webkit-mask-size: contain;
+              mask-size: contain;
+              -webkit-mask-repeat: no-repeat;
+              mask-repeat: no-repeat;
+              background: #dff500;
+              transform: translate(0px, -268px) rotate(-10deg);
+              pointer-events: none;
+            "
+          ></div>
+
+          <p
+            data-reveal="1"
+            style="
+              position: relative;
+              margin: 0;
+              padding-left: clamp(24px, 7.5vw, 107px);
+              font-weight: 700;
+              font-size: clamp(56px, 12vw, 190px);
+              line-height: 0.9;
+              letter-spacing: -0.02em;
+              text-align: left;
+              max-width: 12ch;
+              text-wrap: balance;
+              z-index: 0;
+            "
+          >
+            Simples,<br />completo<br />e excelente.
+          </p>
+        </section>
+
+        <!-- ══════════ 3 · COMUNICAÇÃO — paper-warm ══════════ -->
+
+        <!-- ══════════ 4 · FINANÇAS — ink · simulação interativa ══════════ -->
+        <section
+          data-screen-label="03 Comunicação"
+          style="
+            padding: clamp(80px, 12vw, 140px) 24px;
+            position: relative;
+            background-color: #BF1744;
+          "
+        >
+          <div
+            style="
+              max-width: 1280px;
+              margin: 0 auto;
+              display: grid;
+              grid-template-columns: repeat(
+                auto-fit,
+                minmax(min(100%, 420px), 1fr)
+              );
+              gap: clamp(40px, 6vw, 96px);
+              align-items: center;
+            "
+          >
+            <div data-reveal="1" style="position: relative">
+              <p
+                style="
+                  margin: 0;
+                  font-size: 12px;
+                  text-transform: uppercase;
+                  letter-spacing: 0.18em;
+                  color: #2b2b2b;
+                "
+                data-eyebrow-sm=""
+              >
+                Comunicação interna
+              </p>
+              <h2
+                style="
+                  margin: 24px 0 0;
+                  font-weight: 700;
+                  font-size: clamp(34px, 4.5vw, 64px);
+                  line-height: 1.05;
+                  letter-spacing: -0.02em;
+                  text-wrap: balance;
+                  color: #1e1e1e;
+                "
+              >
+                o pastor fala com a igreja inteira.
+              </h2>
+              <p
+                style="
+                  margin: 24px 0 0;
+                  font-size: 18px;
+                  line-height: 1.55;
+                  color: #2b2b2b;
+                "
+              >
+                A saída oficial dos grupos de WhatsApp.
+              </p>
+              <p
+                style="
+                  display: inline-flex;
+                  align-items: center;
+                  gap: 10px;
+                  margin: 32px 0 0;
+                  border: 1.5px solid #1e1e1e;
+                  border-radius: 0px;
+                  padding: 10px 16px;
+                  font-size: 14px;
+                  line-height: 1.5;
+                  z-index: 0;
+                "
+              >
+                <span
+                  aria-hidden="true"
+                  style="
+                    width: 8px;
+                    height: 8px;
+                    border-radius: 999px;
+                    animation: 2.6s ease-in-out 0s infinite normal none running
+                      igexPulse;
+                    flex-shrink: 0;
+                    background-color: rgb(223, 245, 0);
+                  "
+                ></span
+                >anúncio, líder e voluntário — no mesmo lugar
+              </p>
+            </div>
+            <div data-reveal="2" style="display: flex; justify-content: center">
+              <div
+                style="
+                  width: min(100%, 380px);
+                  background: #fafaf7;
+                  border: 1px solid #1e1e1e;
+                  border-radius: 2px;
+                  overflow: hidden;
+                  transform: rotate(-2deg);
+                  box-shadow: 10px 10px 0 #1e1e1e;
+                "
+              >
+                <div
+                  style="
+                    padding: 16px 20px;
+                    border-bottom: 1px solid rgba(30, 30, 30, 0.12);
+                    display: flex;
+                    align-items: center;
+                    gap: 12px;
+                  "
+                >
+                  <div
+                    style="
+                      width: 36px;
+                      height: 36px;
+                      border-radius: 999px;
+                      background: #1e1e1e;
+                      color: #dff500;
+                      display: flex;
+                      align-items: center;
+                      justify-content: center;
+                      font-weight: 700;
+                      flex-shrink: 0;
+                    "
+                  >
+                    P
+                  </div>
+                  <div>
+                    <p style="margin: 0; font-weight: 700; font-size: 15px">
+                      Pr. Daniel
+                    </p>
+                    <p style="margin: 0; font-size: 12px; color: #6b6b66">
+                      para toda a igreja
+                    </p>
+                  </div>
+                  <span
+                    style="
+                      margin-left: auto;
+                      font-size: 11px;
+                      text-transform: uppercase;
+                      letter-spacing: 0.12em;
+                      background: #BF1744;
+                      color: #1e1e1e;
+                      padding: 4px 10px;
+                      border-radius: 2px;
+                      font-weight: 700;
+                    "
+                    >anúncio</span
+                  >
+                </div>
+                <div
+                  style="
+                    padding: 20px;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 12px;
+                  "
+                >
+                  <div
+                    style="
+                      background: #f2f1ea;
+                      border-radius: 2px;
+                      padding: 14px 16px;
+                      max-width: 90%;
+                    "
+                  >
+                    <p style="margin: 0; font-size: 14px; line-height: 1.5">
+                      Igreja, domingo teremos batismo às 18h. Vamos celebrar
+                      juntos!
+                    </p>
+                  </div>
+                  <div
+                    style="
+                      background: #f2f1ea;
+                      border-radius: 2px;
+                      padding: 14px 16px;
+                      max-width: 90%;
+                    "
+                  >
+                    <p
+                      style="
+                        margin: 0;
+                        font-size: 12px;
+                        color: #6b6b66;
+                        font-weight: 700;
+                      "
+                    >
+                      Líder de louvor → equipe
+                    </p>
+                    <p
+                      style="margin: 6px 0 0; font-size: 14px; line-height: 1.5"
+                    >
+                      Ensaio confirmado pra quinta, 20h. Escala já está no app.
+                    </p>
+                  </div>
+                  <div
+                    style="
+                      background: #dff500;
+                      border-radius: 2px;
+                      padding: 14px 16px;
+                      max-width: 90%;
+                      align-self: flex-end;
+                    "
+                  >
+                    <p
+                      style="
+                        margin: 0;
+                        font-size: 14px;
+                        line-height: 1.5;
+                        font-weight: 700;
+                        display: flex;
+                        align-items: center;
+                        gap: 6px;
+                      "
+                    >
+                      Confirmado!<svg
+                        width="12"
+                        height="12"
+                        viewBox="0 0 12 12"
+                        fill="none"
+                        aria-hidden="true"
+                      >
+                        <path
+                          d="M2 6.2 4.8 9 10 3.4"
+                          stroke="#1E1E1E"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        ></path>
+                      </svg>
+                    </p>
+                    <p style="margin: 4px 0 0; font-size: 12px; color: #2b2b2b">
+                      voluntário · mídia
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <p
+            aria-hidden="true"
+            data-vert-eyebrow=""
+            style="
+              position: absolute;
+              left: 198px;
+              top: 11px;
+              margin: 0;
+              writing-mode: vertical-rl;
+              transform: translate(-86px, 4px) rotate(270deg);
+              font-size: 12px;
+              text-transform: uppercase;
+              letter-spacing: 0.18em;
+              color: #1e1e1e;
+            "
+          >
+            Comunicação interna
+          </p>
+        </section>
+        <section
+          data-screen-label="04 Finanças"
+          style="
+            background: #1e1e1e;
+            color: #fafaf7;
+            padding: clamp(80px, 12vw, 140px) 24px;
+          "
+        >
+          <div style="max-width: 1280px; margin: 0 auto">
+            <div data-reveal="1" style="max-width: 780px">
+              <p
+                style="
+                  margin: 0;
+                  font-size: 12px;
+                  text-transform: uppercase;
+                  letter-spacing: 0.18em;
+                  color: #BF1744;
+                "
+              >
+                DOAÇÕES E GESTÃO FINANCEIRA
+              </p>
+              <h2
+                style="
+                  margin: 24px 0 0;
+                  font-weight: 700;
+                  font-size: clamp(34px, 4.5vw, 64px);
+                  line-height: 1.05;
+                  letter-spacing: -0.02em;
+                  color: #fafaf7;
+                  text-wrap: balance;
+                "
+              >
+                o dízimo num clique. o controle na sua mão.
+              </h2>
+              <p
+                style="
+                  margin: 24px 0 0;
+                  font-size: 18px;
+                  line-height: 1.55;
+                  color: #c9c9c2;
+                "
+              >
+                Cada entrada. Cada saída. Em tempo real. Experimenta — lança um
+                valor aí embaixo.
+              </p>
+              <p
+                style="
+                  display: inline-flex;
+                  align-items: center;
+                  gap: 10px;
+                  margin: 32px 0 0;
+                  border: 1.5px solid rgba(250, 250, 247, 0.5);
+                  border-radius: 2px;
+                  padding: 10px 16px;
+                  font-size: 14px;
+                  line-height: 1.3;
+                  color: #fafaf7;
+                "
+              >
+                <span
+                  aria-hidden="true"
+                  style="
+                    width: 8px;
+                    height: 8px;
+                    border-radius: 999px;
+                    background: #BF1744;
+                    animation: igexPulse 2.6s ease-in-out infinite;
+                    flex-shrink: 0;
+                  "
+                ></span
+                >ligado ao painel do pastor
+              </p>
+            </div>
+
+            <div data-reveal="2" style="margin-top: clamp(48px, 6vw, 80px)">
+              <div
+                style="
+                  display: grid;
+                  grid-template-columns: repeat(
+                    auto-fit,
+                    minmax(min(100%, 220px), 1fr)
+                  );
+                  gap: 16px;
+                "
+              >
+                <div
+                  style="
+                    border-top: 1px solid rgba(250, 250, 247, 0.4);
+                    padding: 20px 4px 0;
+                  "
+                >
+                  <p
+                    style="
+                      margin: 0;
+                      font-size: 12px;
+                      text-transform: uppercase;
+                      letter-spacing: 0.18em;
+                      color: #BF1744;
+                    "
+                  >
+                    Entradas
+                  </p>
+                  <p
+                    style="
+                      margin: 12px 0 0;
+                      font-weight: 700;
+                      font-size: clamp(26px, 3vw, 40px);
+                      letter-spacing: -0.02em;
+                      color: #BF1744;
+                      font-variant-numeric: tabular-nums;
+                    "
+                  >
+                    {{ fmtIn }}
+                  </p>
+                </div>
+                <div
+                  style="
+                    border-top: 1px solid rgba(250, 250, 247, 0.4);
+                    padding: 20px 4px 0;
+                  "
+                >
+                  <p
+                    style="
+                      margin: 0;
+                      font-size: 12px;
+                      text-transform: uppercase;
+                      letter-spacing: 0.18em;
+                      color: #ff8a75;
+                    "
+                  >
+                    Saídas
+                  </p>
+                  <p
+                    style="
+                      margin: 12px 0 0;
+                      font-weight: 700;
+                      font-size: clamp(26px, 3vw, 40px);
+                      letter-spacing: -0.02em;
+                      color: #ff8a75;
+                      font-variant-numeric: tabular-nums;
+                    "
+                  >
+                    {{ fmtOut }}
+                  </p>
+                </div>
+                <div
+                  style="
+                    background: #dff500;
+                    border-radius: 2px;
+                    padding: 20px 24px;
+                    box-shadow: 8px 8px 0 #BF1744;
+                  "
+                >
+                  <p
+                    style="
+                      margin: 0;
+                      font-size: 12px;
+                      text-transform: uppercase;
+                      letter-spacing: 0.18em;
+                      color: #1e1e1e;
+                    "
+                  >
+                    Saldo
+                  </p>
+                  <p
+                    style="margin: 12px 0 0; font-weight: 700; font-size: clamp(26px, 3vw, 40px); letter-spacing: -0.02em; font-variant-numeric: tabular-nums; color: {{ saldoColor }}"
+                  >
+                    {{ fmtSaldo }}
+                  </p>
+                </div>
+              </div>
+
+              <div style="margin-top: 24px" aria-hidden="true">
+                <div
+                  style="
+                    display: flex;
+                    height: 10px;
+                    border-radius: 999px;
+                    overflow: hidden;
+                    background: rgba(250, 250, 247, 0.08);
+                  "
+                >
+                  <div
+                    style="background: #BF1744; transition: width 640ms cubic-bezier(0.16,1,0.3,1); width: {{ barIn }}"
+                  ></div>
+                  <div
+                    style="background: #FF8A75; transition: width 640ms cubic-bezier(0.16,1,0.3,1); width: {{ barOut }}"
+                  ></div>
+                </div>
+                <div
+                  style="
+                    display: flex;
+                    justify-content: space-between;
+                    margin-top: 8px;
+                    font-size: 12px;
+                    color: rgba(250, 250, 247, 0.55);
+                  "
+                >
+                  <span>entradas</span><span>saídas</span>
+                </div>
+              </div>
+
+              <form
+                onSubmit="{{ onLancar }}"
+                style="
+                  margin-top: 32px;
+                  display: grid;
+                  grid-template-columns: repeat(
+                    auto-fit,
+                    minmax(min(100%, 180px), 1fr)
+                  );
+                  gap: 12px;
+                  align-items: start;
+                "
+              >
+                <div
+                  style="
+                    grid-column: 1 / -1;
+                    display: grid;
+                    grid-template-columns: repeat(
+                      auto-fit,
+                      minmax(min(100%, 180px), 1fr)
+                    );
+                    gap: 12px;
+                  "
+                >
+                  <div>
+                    <label
+                      for="fin-desc"
+                      style="
+                        display: block;
+                        font-size: 12px;
+                        text-transform: uppercase;
+                        letter-spacing: 0.18em;
+                        color: rgba(250, 250, 247, 0.6);
+                        margin-bottom: 8px;
+                      "
+                      >Descrição</label
+                    >
+                    <input
+                      id="fin-desc"
+                      type="text"
+                      value="{{ desc }}"
+                      onChange="{{ onDesc }}"
+                      placeholder="Dízimos de domingo"
+                      style="
+                        width: 100%;
+                        min-height: 48px;
+                        padding: 12px 16px;
+                        border-radius: 2px;
+                        border: 1px solid rgba(250, 250, 247, 0.25);
+                        background: #2b2b2b;
+                        color: #fafaf7;
+                        font-family: inherit;
+                        font-size: 16px;
+                        outline: none;
+                      "
+                      style-focus="border-color: #DFF500; box-shadow: 0 0 0 2px rgba(223,245,0,.3)"
+                    />
+                    <sc-if
+                      value="{{ descError }}"
+                      hint-placeholder-val="{{ false }}"
+                      ><p
+                        role="alert"
+                        style="margin: 6px 0 0; font-size: 13px; color: #ff8a75"
+                      >
+                        Escreve uma descrição.
+                      </p></sc-if
+                    >
+                  </div>
+                  <div>
+                    <label
+                      for="fin-val"
+                      style="
+                        display: block;
+                        font-size: 12px;
+                        text-transform: uppercase;
+                        letter-spacing: 0.18em;
+                        color: rgba(250, 250, 247, 0.6);
+                        margin-bottom: 8px;
+                      "
+                      >Valor (R$)</label
+                    >
+                    <input
+                      id="fin-val"
+                      type="text"
+                      inputmode="decimal"
+                      value="{{ val }}"
+                      onChange="{{ onVal }}"
+                      placeholder="8.400"
+                      style="
+                        width: 100%;
+                        min-height: 48px;
+                        padding: 12px 16px;
+                        border-radius: 2px;
+                        border: 1px solid rgba(250, 250, 247, 0.25);
+                        background: #2b2b2b;
+                        color: #fafaf7;
+                        font-family: inherit;
+                        font-size: 16px;
+                        outline: none;
+                        font-variant-numeric: tabular-nums;
+                      "
+                      style-focus="border-color: #DFF500; box-shadow: 0 0 0 2px rgba(223,245,0,.3)"
+                    />
+                    <sc-if
+                      value="{{ valError }}"
+                      hint-placeholder-val="{{ false }}"
+                      ><p
+                        role="alert"
+                        style="margin: 6px 0 0; font-size: 13px; color: #ff8a75"
+                      >
+                        Coloca um valor válido.
+                      </p></sc-if
+                    >
+                  </div>
+                  <div>
+                    <span
+                      style="
+                        display: block;
+                        font-size: 12px;
+                        text-transform: uppercase;
+                        letter-spacing: 0.18em;
+                        color: rgba(250, 250, 247, 0.6);
+                        margin-bottom: 8px;
+                      "
+                      >Tipo</span
+                    >
+                    <div
+                      style="
+                        display: flex;
+                        border: 1px solid rgba(250, 250, 247, 0.25);
+                        border-radius: 2px;
+                        overflow: hidden;
+                      "
+                    >
+                      <button
+                        type="button"
+                        onClick="{{ setEntrada }}"
+                        aria-pressed="{{ isEntrada }}"
+                        style="{{ entradaBtnStyle }}"
+                      >
+                        entrada
+                      </button>
+                      <button
+                        type="button"
+                        onClick="{{ setSaida }}"
+                        aria-pressed="{{ isSaida }}"
+                        style="{{ saidaBtnStyle }}"
+                      >
+                        saída
+                      </button>
+                    </div>
+                  </div>
+                  <div style="display: flex; align-items: flex-end">
+                    <button
+                      type="submit"
+                      style="
+                        width: 100%;
+                        min-height: 48px;
+                        margin-top: 26px;
+                        background: #dff500;
+                        color: #1e1e1e;
+                        border: none;
+                        border-radius: 999px;
+                        font-family: inherit;
+                        font-weight: 700;
+                        font-size: 16px;
+                        cursor: pointer;
+                        transition:
+                          transform 180ms cubic-bezier(0.16, 1, 0.3, 1),
+                          background 180ms;
+                      "
+                      style-hover="transform: translateY(-2px); background: #C8DD00"
+                      style-active="transform: none; background: #C8DD00"
+                    >
+                      lançar
+                    </button>
+                  </div>
+                </div>
+              </form>
+
+              <div
+                style="
+                  margin-top: 28px;
+                  border-top: 1px solid rgba(250, 250, 247, 0.18);
+                "
+              >
+                <sc-if value="{{ isEmpty }}" hint-placeholder-val="{{ false }}">
+                  <p
+                    style="
+                      margin: 24px 0 0;
+                      font-size: 16px;
+                      color: rgba(250, 250, 247, 0.55);
+                    "
+                  >
+                    Comece pelo dízimo de domingo.
+                  </p>
+                </sc-if>
+                <sc-for list="{{ entries }}" as="e" hint-placeholder-count="4">
+                  <div
+                    style="display: flex; align-items: center; gap: 16px; padding: 16px 4px; border-bottom: 1px solid rgba(250,250,247,.1); animation: {{ e.entryAnim }}"
+                  >
+                    <span
+                      aria-hidden="true"
+                      style="width: 8px; height: 8px; border-radius: 999px; background: {{ e.dotColor }}; flex-shrink: 0"
+                    ></span>
+                    <span
+                      style="
+                        flex: 1;
+                        font-size: 16px;
+                        min-width: 0;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+                      "
+                      >{{ e.desc }}</span
+                    >
+                    <span
+                      style="font-weight: 700; font-size: 16px; font-variant-numeric: tabular-nums; color: {{ e.valColor }}"
+                      >{{ e.fmt }}</span
+                    >
+                    <button
+                      type="button"
+                      onClick="{{ e.onRemove }}"
+                      aria-label="Remover lançamento"
+                      style="
+                        width: 44px;
+                        height: 44px;
+                        border: none;
+                        background: transparent;
+                        color: rgba(250, 250, 247, 0.45);
+                        font-size: 20px;
+                        cursor: pointer;
+                        border-radius: 999px;
+                        transition:
+                          color 180ms,
+                          background 180ms;
+                      "
+                      style-hover="color: #FAFAF7; background: rgba(250,250,247,.08)"
+                    >
+                      ×
+                    </button>
+                  </div>
+                </sc-for>
+                <sc-if
+                  value="{{ showWink }}"
+                  hint-placeholder-val="{{ false }}"
+                >
+                  <p
+                    style="
+                      margin: 20px 0 0;
+                      font-size: 14px;
+                      line-height: 1.5;
+                      color: rgba(250, 250, 247, 0.6);
+                      animation: igexFadeIn 640ms cubic-bezier(0.16, 1, 0.3, 1)
+                        both;
+                    "
+                  >
+                    Viu? Sem manual. O sistema inteiro é assim.
+                  </p>
+                </sc-if>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ══════════ 5 · VOLUNTÁRIOS — paper ══════════ -->
+        <section
+          data-screen-label="05 Voluntários"
+          style="background: #fafaf7; padding: clamp(80px, 12vw, 140px) 24px"
+        >
+          <div
+            style="
+              max-width: 1280px;
+              margin: 0 auto;
+              display: grid;
+              grid-template-columns: repeat(
+                auto-fit,
+                minmax(min(100%, 420px), 1fr)
+              );
+              gap: clamp(40px, 6vw, 96px);
+              align-items: center;
+            "
+          >
+            <div data-reveal="1">
+              <p
+                style="
+                  margin: 0;
+                  font-size: 12px;
+                  text-transform: uppercase;
+                  letter-spacing: 0.18em;
+                  color: #2b2b2b;
+                "
+              >
+                Voluntários
+              </p>
+              <h2
+                style="
+                  margin: 24px 0 0;
+                  font-weight: 700;
+                  font-size: clamp(34px, 4.5vw, 64px);
+                  line-height: 1.05;
+                  letter-spacing: -0.02em;
+                  text-wrap: balance;
+                "
+              >
+                cada voluntário, acompanhado de perto.
+              </h2>
+              <p
+                style="
+                  display: inline-flex;
+                  align-items: center;
+                  gap: 10px;
+                  margin: 32px 0 0;
+                  border: 1.5px solid #1e1e1e;
+                  border-radius: 2px;
+                  padding: 10px 16px;
+                  font-size: 14px;
+                  line-height: 1.3;
+                "
+              >
+                <span
+                  aria-hidden="true"
+                  style="
+                    width: 8px;
+                    height: 8px;
+                    border-radius: 999px;
+                    background: #BF1744;
+                    animation: igexPulse 2.6s ease-in-out infinite;
+                    flex-shrink: 0;
+                  "
+                ></span
+                >a escala fala com quem serve
+              </p>
+              <div
+                style="
+                  margin-top: 40px;
+                  display: flex;
+                  gap: 48px;
+                  flex-wrap: wrap;
+                "
+              >
+                <div>
+                  <p
+                    style="
+                      margin: 0;
+                      font-weight: 700;
+                      font-size: clamp(40px, 5vw, 72px);
+                      letter-spacing: -0.03em;
+                      line-height: 1;
+                      font-variant-numeric: tabular-nums;
+                    "
+                    data-count="86"
+                  >
+                    86
+                  </p>
+                  <p style="margin: 8px 0 0; font-size: 14px; color: #6b6b66">
+                    voluntários ativos
+                  </p>
+                </div>
+                <div>
+                  <p
+                    style="
+                      margin: 0;
+                      font-weight: 700;
+                      font-size: clamp(40px, 5vw, 72px);
+                      letter-spacing: -0.03em;
+                      line-height: 1;
+                      font-variant-numeric: tabular-nums;
+                    "
+                    data-count="12"
+                  >
+                    12
+                  </p>
+                  <p style="margin: 8px 0 0; font-size: 14px; color: #6b6b66">
+                    áreas de serviço
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div data-reveal="2" style="border-top: 1px solid #1e1e1e">
+              <div
+                style="
+                  display: flex;
+                  align-items: center;
+                  gap: 16px;
+                  padding: 18px 0;
+                  border-bottom: 1px solid rgba(30, 30, 30, 0.12);
+                  transition: padding-left 180ms cubic-bezier(0.16, 1, 0.3, 1);
+                "
+                style-hover="padding-left: 16px"
+              >
+                <div
+                  style="
+                    width: 44px;
+                    height: 44px;
+                    border-radius: 6px;
+                    background: #1e1e1e;
+                    color: #dff500;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-weight: 700;
+                    font-size: 18px;
+                    flex-shrink: 0;
+                  "
+                >
+                  M
+                </div>
+                <div style="flex: 1; min-width: 0">
+                  <p style="margin: 0; font-weight: 700; font-size: 16px">
+                    Mariana Costa
+                  </p>
+                  <p style="margin: 2px 0 0; font-size: 13px; color: #6b6b66">
+                    Louvor · vocal
+                  </p>
+                </div>
+                <span
+                  style="
+                    font-size: 12px;
+                    text-transform: uppercase;
+                    letter-spacing: 0.12em;
+                    background: #BF1744;
+                    color: #1e1e1e;
+                    font-weight: 700;
+                    padding: 5px 12px;
+                    border-radius: 2px;
+                    white-space: nowrap;
+                  "
+                  >dom · 18h</span
+                >
+              </div>
+              <div
+                style="
+                  display: flex;
+                  align-items: center;
+                  gap: 16px;
+                  padding: 18px 0;
+                  border-bottom: 1px solid rgba(30, 30, 30, 0.12);
+                  transition: padding-left 180ms cubic-bezier(0.16, 1, 0.3, 1);
+                "
+                style-hover="padding-left: 16px"
+              >
+                <div
+                  style="
+                    width: 44px;
+                    height: 44px;
+                    border-radius: 6px;
+                    background: #1e1e1e;
+                    color: #dff500;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-weight: 700;
+                    font-size: 18px;
+                    flex-shrink: 0;
+                  "
+                >
+                  R
+                </div>
+                <div style="flex: 1; min-width: 0">
+                  <p style="margin: 0; font-weight: 700; font-size: 16px">
+                    Rafael Lima
+                  </p>
+                  <p style="margin: 2px 0 0; font-size: 13px; color: #6b6b66">
+                    Mídia · projeção
+                  </p>
+                </div>
+                <span
+                  style="
+                    font-size: 12px;
+                    text-transform: uppercase;
+                    letter-spacing: 0.12em;
+                    background: #BF1744;
+                    color: #1e1e1e;
+                    font-weight: 700;
+                    padding: 5px 12px;
+                    border-radius: 2px;
+                    white-space: nowrap;
+                  "
+                  >dom · 9h</span
+                >
+              </div>
+              <div
+                style="
+                  display: flex;
+                  align-items: center;
+                  gap: 16px;
+                  padding: 18px 0;
+                  border-bottom: 1px solid rgba(30, 30, 30, 0.12);
+                  transition: padding-left 180ms cubic-bezier(0.16, 1, 0.3, 1);
+                "
+                style-hover="padding-left: 16px"
+              >
+                <div
+                  style="
+                    width: 44px;
+                    height: 44px;
+                    border-radius: 6px;
+                    background: #1e1e1e;
+                    color: #dff500;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-weight: 700;
+                    font-size: 18px;
+                    flex-shrink: 0;
+                  "
+                >
+                  J
+                </div>
+                <div style="flex: 1; min-width: 0">
+                  <p style="margin: 0; font-weight: 700; font-size: 16px">
+                    Juliana Prado
+                  </p>
+                  <p style="margin: 2px 0 0; font-size: 13px; color: #6b6b66">
+                    Kids · sala 4–6
+                  </p>
+                </div>
+                <span
+                  style="
+                    font-size: 12px;
+                    text-transform: uppercase;
+                    letter-spacing: 0.12em;
+                    background: #BF1744;
+                    color: #1e1e1e;
+                    font-weight: 700;
+                    padding: 5px 12px;
+                    border-radius: 2px;
+                    white-space: nowrap;
+                  "
+                  >dom · 18h</span
+                >
+              </div>
+              <div
+                style="
+                  display: flex;
+                  align-items: center;
+                  gap: 16px;
+                  padding: 18px 0;
+                  border-bottom: 1px solid #1e1e1e;
+                  transition: padding-left 180ms cubic-bezier(0.16, 1, 0.3, 1);
+                "
+                style-hover="padding-left: 16px"
+              >
+                <div
+                  style="
+                    width: 44px;
+                    height: 44px;
+                    border-radius: 6px;
+                    background: #1e1e1e;
+                    color: #dff500;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-weight: 700;
+                    font-size: 18px;
+                    flex-shrink: 0;
+                  "
+                >
+                  C
+                </div>
+                <div style="flex: 1; min-width: 0">
+                  <p style="margin: 0; font-weight: 700; font-size: 16px">
+                    Carlos Andrade
+                  </p>
+                  <p style="margin: 2px 0 0; font-size: 13px; color: #6b6b66">
+                    Recepção · portaria
+                  </p>
+                </div>
+                <span
+                  style="
+                    font-size: 12px;
+                    text-transform: uppercase;
+                    letter-spacing: 0.12em;
+                    background: #BF1744;
+                    color: #1e1e1e;
+                    font-weight: 700;
+                    padding: 5px 12px;
+                    border-radius: 2px;
+                    white-space: nowrap;
+                  "
+                  >qua · 20h</span
+                >
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ══════════ 6 · SOCIAL — paper-warm ══════════ -->
+        <section
+          data-screen-label="06 Social"
+          style="background: #f2f1ea; padding: clamp(80px, 12vw, 140px) 24px"
+        >
+          <div style="max-width: 1280px; margin: 0 auto">
+            <div data-reveal="1" style="max-width: 820px">
+              <p
+                style="
+                  margin: 0;
+                  font-size: 12px;
+                  text-transform: uppercase;
+                  letter-spacing: 0.18em;
+                  color: #2b2b2b;
+                "
+              >
+                Ação social
+              </p>
+              <h2
+                style="
+                  margin: 24px 0 0;
+                  font-weight: 700;
+                  font-size: clamp(34px, 4.5vw, 64px);
+                  line-height: 1.05;
+                  letter-spacing: -0.02em;
+                  text-wrap: balance;
+                "
+              >
+                cada cesta. cada família. com nome e número.
+              </h2>
+              <p
+                style="
+                  display: inline-flex;
+                  align-items: center;
+                  gap: 10px;
+                  margin: 32px 0 0;
+                  border: 1.5px solid #1e1e1e;
+                  border-radius: 2px;
+                  padding: 10px 16px;
+                  font-size: 14px;
+                  line-height: 1.3;
+                "
+              >
+                <span
+                  aria-hidden="true"
+                  style="
+                    width: 8px;
+                    height: 8px;
+                    border-radius: 999px;
+                    background: #BF1744;
+                    animation: igexPulse 2.6s ease-in-out infinite;
+                    flex-shrink: 0;
+                  "
+                ></span
+                >cada entrega vira história da família
+              </p>
+            </div>
+            <div
+              style="
+                margin-top: clamp(48px, 6vw, 80px);
+                display: grid;
+                grid-template-columns: repeat(
+                  auto-fit,
+                  minmax(min(100%, 380px), 1fr)
+                );
+                gap: clamp(40px, 5vw, 80px);
+                align-items: start;
+              "
+            >
+              <div
+                data-reveal="2"
+                style="display: flex; flex-direction: column; gap: 40px"
+              >
+                <div style="border-top: 1px solid #1e1e1e; padding-top: 24px">
+                  <p
+                    style="
+                      margin: 0;
+                      font-weight: 700;
+                      font-size: clamp(56px, 8vw, 120px);
+                      letter-spacing: -0.03em;
+                      line-height: 1;
+                      font-variant-numeric: tabular-nums;
+                    "
+                    data-count="1348"
+                  >
+                    1.348
+                  </p>
+                  <p style="margin: 12px 0 0; font-size: 16px; color: #2b2b2b">
+                    cestas entregues no ano
+                  </p>
+                </div>
+                <div style="border-top: 1px solid #1e1e1e; padding-top: 24px">
+                  <p
+                    style="
+                      margin: 0;
+                      font-weight: 700;
+                      font-size: clamp(56px, 8vw, 120px);
+                      letter-spacing: -0.03em;
+                      line-height: 1;
+                      font-variant-numeric: tabular-nums;
+                    "
+                    data-count="212"
+                  >
+                    212
+                  </p>
+                  <p style="margin: 12px 0 0; font-size: 16px; color: #2b2b2b">
+                    famílias amparadas
+                  </p>
+                </div>
+              </div>
+              <div
+                data-reveal="3"
+                style="
+                  background: #fafaf7;
+                  border: 1px solid #1e1e1e;
+                  border-radius: 2px;
+                  padding: 8px 24px;
+                  box-shadow: 10px 10px 0 #1e1e1e;
+                "
+              >
+                <div
+                  style="
+                    display: flex;
+                    align-items: center;
+                    gap: 16px;
+                    padding: 18px 0;
+                    border-bottom: 1px solid rgba(30, 30, 30, 0.12);
+                  "
+                >
+                  <div
+                    style="
+                      width: 44px;
+                      height: 44px;
+                      border-radius: 999px;
+                      background: #1e1e1e;
+                      color: #dff500;
+                      display: flex;
+                      align-items: center;
+                      justify-content: center;
+                      font-weight: 700;
+                      font-size: 18px;
+                      flex-shrink: 0;
+                    "
+                  >
+                    F
+                  </div>
+                  <div style="flex: 1; min-width: 0">
+                    <p style="margin: 0; font-weight: 700; font-size: 16px">
+                      Família Ferreira
+                    </p>
+                    <p style="margin: 2px 0 0; font-size: 13px; color: #6b6b66">
+                      Jd. Esperança · 5 pessoas
+                    </p>
+                  </div>
+                  <span
+                    style="font-size: 12px; color: #6b6b66; white-space: nowrap"
+                    >cesta nº 1.346</span
+                  >
+                </div>
+                <div
+                  style="
+                    display: flex;
+                    align-items: center;
+                    gap: 16px;
+                    padding: 18px 0;
+                    border-bottom: 1px solid rgba(30, 30, 30, 0.12);
+                  "
+                >
+                  <div
+                    style="
+                      width: 44px;
+                      height: 44px;
+                      border-radius: 999px;
+                      background: #1e1e1e;
+                      color: #dff500;
+                      display: flex;
+                      align-items: center;
+                      justify-content: center;
+                      font-weight: 700;
+                      font-size: 18px;
+                      flex-shrink: 0;
+                    "
+                  >
+                    S
+                  </div>
+                  <div style="flex: 1; min-width: 0">
+                    <p style="margin: 0; font-weight: 700; font-size: 16px">
+                      Dona Socorro
+                    </p>
+                    <p style="margin: 2px 0 0; font-size: 13px; color: #6b6b66">
+                      Vila Nova · 2 pessoas
+                    </p>
+                  </div>
+                  <span
+                    style="font-size: 12px; color: #6b6b66; white-space: nowrap"
+                    >cesta nº 1.347</span
+                  >
+                </div>
+                <div
+                  style="
+                    display: flex;
+                    align-items: center;
+                    gap: 16px;
+                    padding: 18px 0;
+                  "
+                >
+                  <div
+                    style="
+                      width: 44px;
+                      height: 44px;
+                      border-radius: 999px;
+                      background: #1e1e1e;
+                      color: #dff500;
+                      display: flex;
+                      align-items: center;
+                      justify-content: center;
+                      font-weight: 700;
+                      font-size: 18px;
+                      flex-shrink: 0;
+                    "
+                  >
+                    O
+                  </div>
+                  <div style="flex: 1; min-width: 0">
+                    <p style="margin: 0; font-weight: 700; font-size: 16px">
+                      Família Oliveira
+                    </p>
+                    <p style="margin: 2px 0 0; font-size: 13px; color: #6b6b66">
+                      Centro · 4 pessoas
+                    </p>
+                  </div>
+                  <span
+                    style="
+                      font-size: 12px;
+                      text-transform: uppercase;
+                      letter-spacing: 0.12em;
+                      background: #dff500;
+                      color: #1e1e1e;
+                      font-weight: 700;
+                      padding: 5px 12px;
+                      border-radius: 2px;
+                      white-space: nowrap;
+                    "
+                    >hoje</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ══════════ MANIFESTO B — lime ══════════ -->
+        <section
+          data-screen-label="Manifesto — excelência é uma forma de cuidar"
+          aria-label="manifesto"
+          data-manifesto=""
+          style="
+            background: #dff500;
+            min-height: 92vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: clamp(80px, 12vw, 140px) 24px;
+            position: relative;
+            overflow: clip;
+          "
+        >
+          <p
+            data-reveal="1"
+            style="
+              position: relative;
+              margin: 0;
+              font-weight: 700;
+              font-size: clamp(44px, 8vw, 120px);
+              line-height: 1;
+              letter-spacing: -0.03em;
+              text-align: center;
+              max-width: 16.88ch;
+              text-wrap: balance;
+              color: #1e1e1e;
+            "
+          >
+            excelência é uma forma de cuidar.
+          </p>
+        </section>
+
+        <!-- ══════════ 7 · KIDS — paper ══════════ -->
+        <section
+          data-screen-label="07 Kids"
+          style="background: #fafaf7; padding: clamp(80px, 12vw, 140px) 24px"
+        >
+          <div
+            style="
+              max-width: 1280px;
+              margin: 0 auto;
+              display: grid;
+              grid-template-columns: repeat(
+                auto-fit,
+                minmax(min(100%, 420px), 1fr)
+              );
+              gap: clamp(40px, 6vw, 96px);
+              align-items: center;
+            "
+          >
+            <div data-reveal="1">
+              <p
+                style="
+                  margin: 0;
+                  font-size: 12px;
+                  text-transform: uppercase;
+                  letter-spacing: 0.18em;
+                  color: #2b2b2b;
+                  position: static;
+                "
+              >
+                Kids
+              </p>
+              <h2
+                style="
+                  margin: 24px 0 0;
+                  font-weight: 700;
+                  font-size: clamp(34px, 4.5vw, 64px);
+                  line-height: 1.05;
+                  letter-spacing: -0.02em;
+                  text-wrap: balance;
+                "
+              >
+                crianças seguras. pais tranquilos.
+              </h2>
+              <p
+                style="
+                  margin: 24px 0 0;
+                  font-size: 18px;
+                  line-height: 1.55;
+                  color: #2b2b2b;
+                "
+              >
+                Quem entrega é quem busca.
+              </p>
+              <p
+                style="
+                  display: inline-flex;
+                  align-items: center;
+                  gap: 10px;
+                  margin: 32px 0 0;
+                  border: 1.5px solid #1e1e1e;
+                  border-radius: 2px;
+                  padding: 10px 16px;
+                  font-size: 14px;
+                  line-height: 1.3;
+                "
+              >
+                <span
+                  aria-hidden="true"
+                  style="
+                    width: 8px;
+                    height: 8px;
+                    border-radius: 999px;
+                    background: #BF1744;
+                    animation: igexPulse 2.6s ease-in-out infinite;
+                    flex-shrink: 0;
+                  "
+                ></span
+                >o check-in avisa o painel do pastor na hora
+              </p>
+            </div>
+            <div data-reveal="2" style="display: flex; justify-content: center">
+              <div
+                style="
+                  width: min(100%, 400px);
+                  background: #fafaf7;
+                  border: 1px solid #1e1e1e;
+                  border-radius: 2px;
+                  overflow: hidden;
+                  transform: rotate(2deg);
+                  box-shadow: 10px 10px 0 #1e1e1e;
+                "
+              >
+                <div
+                  style="
+                    background: #1e1e1e;
+                    color: #fafaf7;
+                    padding: 18px 24px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                  "
+                >
+                  <p style="margin: 0; font-weight: 700; font-size: 15px">
+                    check-in kids
+                  </p>
+                  <span
+                    style="
+                      font-size: 12px;
+                      text-transform: uppercase;
+                      letter-spacing: 0.12em;
+                      background: #dff500;
+                      color: #1e1e1e;
+                      font-weight: 700;
+                      padding: 4px 12px;
+                      border-radius: 2px;
+                    "
+                    >presente</span
+                  >
+                </div>
+                <div
+                  style="
+                    padding: 24px;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 20px;
+                  "
+                >
+                  <div style="display: flex; align-items: center; gap: 16px">
+                    <div
+                      style="
+                        width: 52px;
+                        height: 52px;
+                        border-radius: 999px;
+                        background: #dff500;
+                        color: #1e1e1e;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-weight: 700;
+                        font-size: 22px;
+                        flex-shrink: 0;
+                      "
+                    >
+                      A
+                    </div>
+                    <div>
+                      <p style="margin: 0; font-weight: 700; font-size: 18px">
+                        Alice, 5 anos
+                      </p>
+                      <p
+                        style="margin: 2px 0 0; font-size: 13px; color: #6b6b66"
+                      >
+                        Sala Arca · 4 a 6 anos
+                      </p>
+                    </div>
+                  </div>
+                  <div
+                    style="
+                      border: 1px solid rgba(30, 30, 30, 0.12);
+                      border-radius: 2px;
+                      padding: 16px;
+                      display: flex;
+                      flex-direction: column;
+                      gap: 12px;
+                    "
+                  >
+                    <div
+                      style="
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        gap: 12px;
+                      "
+                    >
+                      <span style="font-size: 13px; color: #6b6b66"
+                        >entregue por</span
+                      ><span style="font-size: 14px; font-weight: 700"
+                        >Camila (mãe) · 17h52</span
+                      >
+                    </div>
+                    <div
+                      style="height: 1px; background: rgba(30, 30, 30, 0.12)"
+                    ></div>
+                    <div
+                      style="
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        gap: 12px;
+                      "
+                    >
+                      <span style="font-size: 13px; color: #6b6b66"
+                        >retirada só por</span
+                      ><span
+                        style="
+                          font-size: 14px;
+                          font-weight: 700;
+                          display: inline-flex;
+                          align-items: center;
+                          gap: 8px;
+                        "
+                        >Camila (mãe)<span
+                          aria-hidden="true"
+                          style="
+                            display: inline-flex;
+                            width: 20px;
+                            height: 20px;
+                            border-radius: 999px;
+                            background: #BF1744;
+                            align-items: center;
+                            justify-content: center;
+                          "
+                          ><svg
+                            width="11"
+                            height="11"
+                            viewBox="0 0 12 12"
+                            fill="none"
+                          >
+                            <path
+                              d="M2 6.2 4.8 9 10 3.4"
+                              stroke="#1E1E1E"
+                              stroke-width="2"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                            ></path></svg></span
+                      ></span>
+                    </div>
+                  </div>
+                  <p style="margin: 0; font-size: 13px; color: #6b6b66">
+                    Código de retirada enviado ao celular da responsável.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ══════════ 8 · MEMBROS — paper-warm ══════════ -->
+        <section
+          data-screen-label="08 Membros"
+          style="
+            padding: clamp(80px, 12vw, 140px) 24px;
+            position: relative;
+            background-color: #BF1744;
+          "
+        >
+          <div
+            style="
+              max-width: 1280px;
+              margin: 0 auto;
+              display: grid;
+              grid-template-columns: repeat(
+                auto-fit,
+                minmax(min(100%, 420px), 1fr)
+              );
+              gap: clamp(40px, 6vw, 96px);
+              align-items: center;
+              position: relative;
+            "
+          >
+            <div data-reveal="1" style="position: relative">
+              <p
+                style="
+                  margin: 0;
+                  font-size: 12px;
+                  text-transform: uppercase;
+                  letter-spacing: 0.18em;
+                  color: #2b2b2b;
+                "
+                data-eyebrow-sm=""
+              >
+                Membros e visitantes
+              </p>
+              <h2
+                style="
+                  margin: 24px 0 0;
+                  font-weight: 700;
+                  font-size: clamp(34px, 4.5vw, 64px);
+                  line-height: 1.05;
+                  letter-spacing: -0.02em;
+                  text-wrap: balance;
+                  color: #1e1e1e;
+                "
+              >
+                o visitante de hoje. o membro de amanhã.
+              </h2>
+              <p
+                style="
+                  display: inline-flex;
+                  align-items: center;
+                  gap: 10px;
+                  margin: 32px 0 0;
+                  border: 1.5px solid #1e1e1e;
+                  border-radius: 2px;
+                  padding: 10px 16px;
+                  font-size: 14px;
+                  line-height: 1.3;
+                  color: #1e1e1e;
+                  border-color: #1e1e1e;
+                "
+              >
+                <span
+                  aria-hidden="true"
+                  style="
+                    width: 8px;
+                    height: 8px;
+                    border-radius: 999px;
+                    animation: 2.6s ease-in-out 0s infinite normal none running
+                      igexPulse;
+                    flex-shrink: 0;
+                    background-color: rgb(222, 246, 0);
+                  "
+                ></span
+                >o visitante do kids vira família acompanhada
+              </p>
+              <div style="margin-top: 40px">
+                <p
+                  style="
+                    margin: 0;
+                    font-weight: 700;
+                    font-size: clamp(40px, 5vw, 72px);
+                    letter-spacing: -0.03em;
+                    line-height: 1;
+                    font-variant-numeric: tabular-nums;
+                  "
+                  data-count="34"
+                >
+                  34
+                </p>
+                <p
+                  style="
+                    margin: 8px 0 0;
+                    font-size: 14px;
+                    color: rgba(30, 30, 30, 0.75);
+                  "
+                >
+                  visitantes acompanhados este mês
+                </p>
+              </div>
+              <p
+                aria-hidden="true"
+                data-vert-eyebrow=""
+                style="
+                  position: absolute;
+                  margin: 0;
+                  writing-mode: vertical-rl;
+                  transform: translate(48px, -88px) rotate(270deg);
+                  font-size: 12px;
+                  text-transform: uppercase;
+                  letter-spacing: 0.18em;
+                  color: #2b2b2b;
+                  left: 36px;
+                  top: -1px;
+                "
+              >
+                Membros e visitantes
+              </p>
+            </div>
+            <div data-reveal="2" style="border-top: 1px solid #1e1e1e">
+              <div
+                style="
+                  display: flex;
+                  align-items: center;
+                  gap: 16px;
+                  padding: 18px 0;
+                  border-bottom: 1px solid rgba(30, 30, 30, 0.12);
+                "
+              >
+                <div style="flex: 1; min-width: 0">
+                  <p style="margin: 0; font-weight: 700; font-size: 16px">
+                    Paulo Henrique
+                  </p>
+                  <p
+                    style="
+                      margin: 2px 0 0;
+                      font-size: 13px;
+                      color: rgba(30, 30, 30, 0.72);
+                    "
+                  >
+                    1ª visita · domingo
+                  </p>
+                </div>
+                <span
+                  style="
+                    font-size: 12px;
+                    text-transform: uppercase;
+                    letter-spacing: 0.12em;
+                    border: 1px solid #1e1e1e;
+                    color: #1e1e1e;
+                    font-weight: 700;
+                    padding: 5px 12px;
+                    border-radius: 2px;
+                    white-space: nowrap;
+                  "
+                  >visitante</span
+                >
+              </div>
+              <div
+                style="
+                  display: flex;
+                  align-items: center;
+                  gap: 16px;
+                  padding: 18px 0;
+                  border-bottom: 1px solid rgba(30, 30, 30, 0.12);
+                "
+              >
+                <div style="flex: 1; min-width: 0">
+                  <p style="margin: 0; font-weight: 700; font-size: 16px">
+                    Renata Dias
+                  </p>
+                  <p
+                    style="
+                      margin: 2px 0 0;
+                      font-size: 13px;
+                      color: rgba(30, 30, 30, 0.72);
+                    "
+                  >
+                    3ª visita · pediu contato
+                  </p>
+                </div>
+                <span
+                  style="
+                    font-size: 12px;
+                    text-transform: uppercase;
+                    letter-spacing: 0.12em;
+                    color: #1e1e1e;
+                    font-weight: 700;
+                    padding: 5px 12px;
+                    border-radius: 2px;
+                    white-space: nowrap;
+                    background-color: #f3f3f3;
+                  "
+                  >em acompanhamento</span
+                >
+              </div>
+              <div
+                style="
+                  display: flex;
+                  align-items: center;
+                  gap: 16px;
+                  padding: 18px 0;
+                  border-bottom: 1px solid rgba(30, 30, 30, 0.12);
+                "
+              >
+                <div style="flex: 1; min-width: 0">
+                  <p style="margin: 0; font-weight: 700; font-size: 16px">
+                    Família Souza
+                  </p>
+                  <p
+                    style="
+                      margin: 2px 0 0;
+                      font-size: 13px;
+                      color: rgba(30, 30, 30, 0.72);
+                    "
+                  >
+                    Encontro de novos membros
+                  </p>
+                </div>
+                <span
+                  style="
+                    font-size: 12px;
+                    text-transform: uppercase;
+                    letter-spacing: 0.12em;
+                    color: #1e1e1e;
+                    font-weight: 700;
+                    padding: 5px 12px;
+                    border-radius: 2px;
+                    white-space: nowrap;
+                    background-color: #f3f3f3;
+                  "
+                  >integração</span
+                >
+              </div>
+              <div
+                style="
+                  display: flex;
+                  align-items: center;
+                  gap: 16px;
+                  padding: 18px 0;
+                  border-bottom: 1px solid #1e1e1e;
+                "
+              >
+                <div style="flex: 1; min-width: 0">
+                  <p style="margin: 0; font-weight: 700; font-size: 16px">
+                    Marcos Vieira
+                  </p>
+                  <p
+                    style="
+                      margin: 2px 0 0;
+                      font-size: 13px;
+                      color: rgba(30, 30, 30, 0.72);
+                    "
+                  >
+                    Batizado em junho
+                  </p>
+                </div>
+                <span
+                  style="
+                    font-size: 12px;
+                    text-transform: uppercase;
+                    letter-spacing: 0.12em;
+                    background: #dff500;
+                    color: #1e1e1e;
+                    font-weight: 700;
+                    padding: 5px 12px;
+                    border-radius: 2px;
+                    white-space: nowrap;
+                  "
+                  >membro</span
+                >
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ══════════ 9 · INSCRIÇÕES — paper ══════════ -->
+        <section
+          data-screen-label="09 Inscrições"
+          style="background: #fafaf7; padding: clamp(80px, 12vw, 140px) 24px"
+        >
+          <div style="max-width: 1280px; margin: 0 auto">
+            <div data-reveal="1" style="max-width: 820px">
+              <p
+                style="
+                  margin: 0;
+                  font-size: 12px;
+                  text-transform: uppercase;
+                  letter-spacing: 0.18em;
+                  color: #2b2b2b;
+                "
+              >
+                Inscrições e eventos
+              </p>
+              <h2
+                style="
+                  margin: 24px 0 0;
+                  font-weight: 700;
+                  font-size: clamp(34px, 4.5vw, 64px);
+                  line-height: 1.05;
+                  letter-spacing: -0.02em;
+                  text-wrap: balance;
+                "
+              >
+                inscrição, vaga e pagamento — resolvidos.
+              </h2>
+              <p
+                style="
+                  margin: 24px 0 0;
+                  font-size: 18px;
+                  line-height: 1.55;
+                  color: #2b2b2b;
+                "
+              >
+                Sem planilha. Sem fila na porta.
+              </p>
+            </div>
+            <div
+              data-reveal="2"
+              style="
+                margin-top: clamp(48px, 6vw, 72px);
+                display: grid;
+                grid-template-columns: repeat(
+                  auto-fit,
+                  minmax(min(100%, 300px), 1fr)
+                );
+                gap: 20px;
+              "
+            >
+              <div
+                style="
+                  border: 1px solid #1e1e1e;
+                  border-radius: 2px;
+                  padding: 28px;
+                  background: #fafaf7;
+                  box-shadow: 8px 8px 0 #1e1e1e;
+                  transition:
+                    transform 340ms cubic-bezier(0.16, 1, 0.3, 1),
+                    box-shadow 340ms;
+                "
+                style-hover="transform: translate(-3px, -3px); box-shadow: 11px 11px 0 #1E1E1E"
+              >
+                <div
+                  style="
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: flex-start;
+                    gap: 12px;
+                  "
+                >
+                  <p
+                    style="
+                      margin: 0;
+                      font-weight: 700;
+                      font-size: 20px;
+                      letter-spacing: -0.02em;
+                    "
+                  >
+                    Retiro de Jovens
+                  </p>
+                  <span
+                    style="
+                      font-size: 12px;
+                      text-transform: uppercase;
+                      letter-spacing: 0.12em;
+                      background: #dff500;
+                      color: #1e1e1e;
+                      font-weight: 700;
+                      padding: 5px 12px;
+                      border-radius: 2px;
+                      white-space: nowrap;
+                    "
+                    >12 vagas</span
+                  >
+                </div>
+                <p style="margin: 12px 0 0; font-size: 14px; color: #6b6b66">
+                  14–16 de agosto · Sítio Betel
+                </p>
+                <div
+                  style="
+                    margin-top: 24px;
+                    border-top: 1px solid rgba(30, 30, 30, 0.12);
+                    padding-top: 16px;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                  "
+                >
+                  <span
+                    style="
+                      font-weight: 700;
+                      font-size: 22px;
+                      font-variant-numeric: tabular-nums;
+                    "
+                    >R$ 180</span
+                  ><span style="font-size: 13px; color: #6b6b66"
+                    >148/160 pagos</span
+                  >
+                </div>
+              </div>
+              <div
+                style="
+                  border: 1px solid #1e1e1e;
+                  border-radius: 2px;
+                  padding: 28px;
+                  background: #fafaf7;
+                  box-shadow: 8px 8px 0 #1e1e1e;
+                  transition:
+                    transform 340ms cubic-bezier(0.16, 1, 0.3, 1),
+                    box-shadow 340ms;
+                "
+                style-hover="transform: translate(-3px, -3px); box-shadow: 11px 11px 0 #1E1E1E"
+              >
+                <div
+                  style="
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: flex-start;
+                    gap: 12px;
+                  "
+                >
+                  <p
+                    style="
+                      margin: 0;
+                      font-weight: 700;
+                      font-size: 20px;
+                      letter-spacing: -0.02em;
+                    "
+                  >
+                    Conferência de Mulheres
+                  </p>
+                  <span
+                    style="
+                      font-size: 12px;
+                      text-transform: uppercase;
+                      letter-spacing: 0.12em;
+                      background: #BF1744;
+                      color: #1e1e1e;
+                      font-weight: 700;
+                      padding: 5px 12px;
+                      border-radius: 2px;
+                      white-space: nowrap;
+                    "
+                    >últimas vagas</span
+                  >
+                </div>
+                <p style="margin: 12px 0 0; font-size: 14px; color: #6b6b66">
+                  5 de setembro · templo central
+                </p>
+                <div
+                  style="
+                    margin-top: 24px;
+                    border-top: 1px solid rgba(30, 30, 30, 0.12);
+                    padding-top: 16px;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                  "
+                >
+                  <span
+                    style="
+                      font-weight: 700;
+                      font-size: 22px;
+                      font-variant-numeric: tabular-nums;
+                    "
+                    >R$ 65</span
+                  ><span style="font-size: 13px; color: #6b6b66"
+                    >292/300 pagos</span
+                  >
+                </div>
+              </div>
+              <div
+                style="
+                  border: 1px solid #1e1e1e;
+                  border-radius: 2px;
+                  padding: 28px;
+                  background: #1e1e1e;
+                  color: #fafaf7;
+                  box-shadow: 8px 8px 0 #1e1e1e;
+                  transition:
+                    transform 340ms cubic-bezier(0.16, 1, 0.3, 1),
+                    box-shadow 340ms;
+                "
+                style-hover="transform: translate(-3px, -3px); box-shadow: 11px 11px 0 #1E1E1E"
+              >
+                <div
+                  style="
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: flex-start;
+                    gap: 12px;
+                  "
+                >
+                  <p
+                    style="
+                      margin: 0;
+                      font-weight: 700;
+                      font-size: 20px;
+                      letter-spacing: -0.02em;
+                      color: #fafaf7;
+                    "
+                  >
+                    Batismo nas Águas
+                  </p>
+                  <span
+                    style="
+                      font-size: 12px;
+                      text-transform: uppercase;
+                      letter-spacing: 0.12em;
+                      background: #dff500;
+                      color: #1e1e1e;
+                      font-weight: 700;
+                      padding: 5px 12px;
+                      border-radius: 2px;
+                      white-space: nowrap;
+                    "
+                    >esgotado</span
+                  >
+                </div>
+                <p style="margin: 12px 0 0; font-size: 14px; color: #c9c9c2">
+                  domingo · 18h
+                </p>
+                <div
+                  style="
+                    margin-top: 24px;
+                    border-top: 1px solid rgba(250, 250, 247, 0.18);
+                    padding-top: 16px;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                  "
+                >
+                  <span style="font-weight: 700; font-size: 22px">gratuito</span
+                  ><span style="font-size: 13px; color: #c9c9c2"
+                    >40/40 confirmados</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ══════════ MARQUEE — lima ══════════ -->
+        <section
+          aria-label="toda a sua igreja, num só lugar"
+          data-screen-label="Marquee"
+          style="
+            background: #dff500;
+            border-top: 1px solid #1e1e1e;
+            border-bottom: 1px solid #1e1e1e;
+            overflow: clip;
+            padding: clamp(18px, 2.4vw, 30px) 0;
+          "
+        >
+          <div
+            style="
+              display: flex;
+              width: max-content;
+              animation: igexMarquee 28s linear infinite;
+              will-change: transform;
+            "
+          >
+            <div
+              style="
+                display: flex;
+                align-items: baseline;
+                gap: clamp(20px, 3vw, 40px);
+                padding-right: clamp(20px, 3vw, 40px);
+                white-space: nowrap;
+              "
+            >
+              <span
+                style="
+                  font-weight: 700;
+                  font-size: clamp(30px, 4vw, 56px);
+                  letter-spacing: -0.02em;
+                  line-height: 1;
+                  color: #1e1e1e;
+                "
+                >toda a sua igreja</span
+              >
+              <span
+                aria-hidden="true"
+                style="font-size: clamp(16px, 2vw, 26px); color: #1e1e1e"
+                >✦</span
+              >
+              <span
+                style="
+                  font-weight: 700;
+                  font-size: clamp(30px, 4vw, 56px);
+                  letter-spacing: 0em;
+                  line-height: 1;
+                  color: transparent;
+                  -webkit-text-stroke: 1.5px #1e1e1e;
+                "
+                >num só lugar</span
+              >
+              <span
+                aria-hidden="true"
+                style="font-size: clamp(16px, 2vw, 26px); color: #1e1e1e"
+                >✦</span
+              >
+              <span
+                style="
+                  font-weight: 700;
+                  font-size: clamp(30px, 4vw, 56px);
+                  letter-spacing: -0.02em;
+                  line-height: 1;
+                  color: #1e1e1e;
+                "
+                >toda a sua igreja</span
+              >
+              <span
+                aria-hidden="true"
+                style="font-size: clamp(16px, 2vw, 26px); color: #1e1e1e"
+                >✦</span
+              >
+              <span
+                style="
+                  font-weight: 700;
+                  font-size: clamp(30px, 4vw, 56px);
+                  letter-spacing: 0em;
+                  line-height: 1;
+                  color: transparent;
+                  -webkit-text-stroke: 1.5px #1e1e1e;
+                "
+                >num só lugar</span
+              >
+              <span
+                aria-hidden="true"
+                style="font-size: clamp(16px, 2vw, 26px); color: #1e1e1e"
+                >✦</span
+              >
+            </div>
+            <div
+              aria-hidden="true"
+              style="
+                display: flex;
+                align-items: baseline;
+                gap: clamp(20px, 3vw, 40px);
+                padding-right: clamp(20px, 3vw, 40px);
+                white-space: nowrap;
+              "
+            >
+              <span
+                style="
+                  font-weight: 700;
+                  font-size: clamp(30px, 4vw, 56px);
+                  letter-spacing: -0.02em;
+                  line-height: 1;
+                  color: #1e1e1e;
+                "
+                >toda a sua igreja</span
+              >
+              <span style="font-size: clamp(16px, 2vw, 26px); color: #1e1e1e"
+                >✦</span
+              >
+              <span
+                style="
+                  font-weight: 700;
+                  font-size: clamp(30px, 4vw, 56px);
+                  letter-spacing: 0em;
+                  line-height: 1;
+                  color: transparent;
+                  -webkit-text-stroke: 1.5px #1e1e1e;
+                "
+                >num só lugar</span
+              >
+              <span style="font-size: clamp(16px, 2vw, 26px); color: #1e1e1e"
+                >✦</span
+              >
+              <span
+                style="
+                  font-weight: 700;
+                  font-size: clamp(30px, 4vw, 56px);
+                  letter-spacing: -0.02em;
+                  line-height: 1;
+                  color: #1e1e1e;
+                "
+                >toda a sua igreja</span
+              >
+              <span style="font-size: clamp(16px, 2vw, 26px); color: #1e1e1e"
+                >✦</span
+              >
+              <span
+                style="
+                  font-weight: 700;
+                  font-size: clamp(30px, 4vw, 56px);
+                  letter-spacing: 0em;
+                  line-height: 1;
+                  color: transparent;
+                  -webkit-text-stroke: 1.5px #1e1e1e;
+                "
+                >num só lugar</span
+              >
+              <span style="font-size: clamp(16px, 2vw, 26px); color: #1e1e1e"
+                >✦</span
+              >
+            </div>
+          </div>
+        </section>
+
+        <!-- ══════════ 10 · CONVITE — ink ══════════ -->
+        <section
+          data-screen-label="10 Convite"
+          style="
+            background: #1e1e1e;
+            color: #fafaf7;
+            padding: clamp(120px, 16vw, 200px) 24px clamp(60px, 8vw, 100px);
+          "
+        >
+          <div style="max-width: 1280px; margin: 0 auto">
+            <div
+              style="
+                display: grid;
+                grid-template-columns: repeat(
+                  auto-fit,
+                  minmax(min(100%, 380px), 1fr)
+                );
+                gap: clamp(40px, 6vw, 80px);
+                align-items: center;
+              "
+            >
+              <div data-reveal="1">
+                <p
+                  style="
+                    margin: 0;
+                    font-size: 12px;
+                    text-transform: uppercase;
+                    letter-spacing: 0.18em;
+                    color: #BF1744;
+                  "
+                >
+                  Um lugar só
+                </p>
+                <h2
+                  style="
+                    margin: 28px 0 0;
+                    font-weight: 700;
+                    font-size: clamp(40px, 7vw, 104px);
+                    line-height: 0.95;
+                    letter-spacing: -0.03em;
+                    color: #fafaf7;
+                    text-wrap: balance;
+                  "
+                >
+                  não é sobre ter um app. é sobre fazer parte.
+                </h2>
+                <p
+                  style="
+                    margin: 32px 0 0;
+                    font-size: clamp(17px, 1.6vw, 22px);
+                    line-height: 1.5;
+                    color: #c9c9c2;
+                  "
+                >
+                  Nascida dentro da igreja.<br />Para igreja que leva o cuidado
+                  a sério.
+                </p>
+              </div>
+              <div
+                data-reveal="2"
+                style="display: flex; justify-content: center"
+              >
+                <div
+                  data-rotate-scroll=""
+                  style="
+                    width: min(400px, 82vw);
+                    aspect-ratio: 1713/1785;
+                    position: relative;
+                    -webkit-mask-image: url(&quot;assets/logo-symbol-ink.png&quot;);
+                    mask-image: url(&quot;assets/logo-symbol-ink.png&quot;);
+                    -webkit-mask-size: contain;
+                    mask-size: contain;
+                    -webkit-mask-repeat: no-repeat;
+                    mask-repeat: no-repeat;
+                    -webkit-mask-position: center;
+                    mask-position: center;
+                  "
+                >
+                  <div
+                    style="
+                      position: absolute;
+                      inset: 0;
+                      filter: grayscale(1) contrast(1.18) brightness(0.92);
+                    "
+                  >
+                    <x-import
+                      component-from-global-scope="image-slot"
+                      from="./image-slot.js"
+                      id="convite-foto"
+                      fit="cover"
+                      shape="rect"
+                      radius="0"
+                      hint-size="100%,100%"
+                      style="
+                        position: absolute;
+                        inset: 0;
+                        width: 100%;
+                        height: 100%;
+                      "
+                    ></x-import>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div data-reveal="2" style="margin-top: clamp(48px, 6vw, 80px)">
+              <a
+                href="{{ waLink }}"
+                target="_blank"
+                rel="noopener"
+                onClick="{{ fireLead }}"
+                style="
+                  display: inline-flex;
+                  align-items: center;
+                  gap: 14px;
+                  background: #dff500;
+                  color: #1e1e1e;
+                  text-decoration: none;
+                  font-weight: 700;
+                  font-size: clamp(17px, 1.8vw, 22px);
+                  padding: 22px 36px;
+                  border-radius: 999px;
+                  min-height: 44px;
+                  transition:
+                    transform 180ms cubic-bezier(0.16, 1, 0.3, 1),
+                    background 180ms,
+                    gap 180ms cubic-bezier(0.16, 1, 0.3, 1);
+                "
+                style-hover="transform: translateY(-2px); background: #C8DD00; gap: 18px"
+                style-active="transform: none; background: #C8DD00"
+                >falar com a igex no WhatsApp<span
+                  aria-hidden="true"
+                  style="
+                    display: inline-flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 30px;
+                    height: 30px;
+                    border-radius: 999px;
+                    background: #1e1e1e;
+                    color: #dff500;
+                    font-size: 16px;
+                  "
+                  >→</span
+                ></a
+              >
+            </div>
+            <div
+              data-reveal="3"
+              style="
+                margin-top: clamp(100px, 14vw, 180px);
+                border-top: 1px solid rgba(250, 250, 247, 0.18);
+                padding-top: clamp(40px, 6vw, 64px);
+              "
+            >
+              <p
+                style="
+                  margin: 0;
+                  font-weight: 700;
+                  font-size: clamp(28px, 4vw, 56px);
+                  letter-spacing: -0.02em;
+                  line-height: 1.05;
+                  color: #fafaf7;
+                  text-wrap: balance;
+                "
+              >
+                a sua igreja, toda junta. num só lugar.
+              </p>
+              <div
+                style="
+                  margin-top: clamp(40px, 5vw, 64px);
+                  display: flex;
+                  align-items: center;
+                  justify-content: space-between;
+                  flex-wrap: wrap;
+                  gap: 20px;
+                "
+              >
+                <div style="display: flex; align-items: center; gap: 10px">
+                  <img
+                    src="assets/logo-symbol-ink.png"
+                    alt=""
+                    style="
+                      height: 26px;
+                      width: auto;
+                      display: block;
+                      filter: invert(1);
+                    "
+                  />
+                  <span
+                    style="
+                      font-weight: 700;
+                      font-size: 16px;
+                      color: #fafaf7;
+                      white-space: nowrap;
+                      flex-shrink: 0;
+                    "
+                    >igex<span style="font-weight: 400; color: #c9c9c2">
+                      tecnologia</span
+                    ></span
+                  >
+                </div>
+                <div
+                  style="
+                    display: flex;
+                    align-items: center;
+                    gap: 24px;
+                    flex-wrap: wrap;
+                  "
+                >
+                  <a
+                    href="https://painel.somossistem.com"
+                    target="_blank"
+                    rel="noopener"
+                    style="
+                      display: inline-flex;
+                      align-items: center;
+                      min-height: 44px;
+                      font-size: 13px;
+                      font-weight: 700;
+                      color: rgba(250, 250, 247, 0.7);
+                      text-decoration: none;
+                      white-space: nowrap;
+                      transition: color 180ms;
+                    "
+                    style-hover="color: #FAFAF7; text-decoration: underline; text-underline-offset: 4px"
+                    >acessar o painel →</a
+                  >
+                  <a
+                    href="privacidade.html"
+                    style="
+                      display: inline-flex;
+                      align-items: center;
+                      min-height: 44px;
+                      font-size: 13px;
+                      font-weight: 700;
+                      color: rgba(250, 250, 247, 0.7);
+                      text-decoration: none;
+                      white-space: nowrap;
+                      transition: color 180ms;
+                    "
+                    style-hover="color: #FAFAF7; text-decoration: underline; text-underline-offset: 4px"
+                    >privacidade</a
+                  >
+                  <p
+                    style="
+                      margin: 0;
+                      font-size: 13px;
+                      color: rgba(250, 250, 247, 0.5);
+                    "
+                  >
+                    SomosSistem · tecnologia — {{ year }}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </x-dc>
+    <script
+      type="text/x-dc"
+      data-dc-script
+      data-props='{
+  "whatsappNumber": { "editor": "text", "default": "5500000000000", "tsType": "string", "section": "Contato" },
+  "metaPixelId": { "editor": "text", "default": "", "tsType": "string", "section": "Lançamento" },
+  "motion": { "editor": "boolean", "default": true, "tsType": "boolean", "section": "Experiência" }
+}'
+    >
+      class Component extends DCLogic {
+        state = {
+          desc: '',
+          val: '',
+          type: 'entrada',
+          showWink: false,
+          lastAddedId: 0,
+          descError: false,
+          valError: false,
+          entries: [
+            { id: 1, desc: 'Dízimos de domingo', value: 8400, type: 'entrada' },
+            { id: 2, desc: 'Ofertas', value: 2150, type: 'entrada' },
+            { id: 3, desc: 'Aluguel', value: 3200, type: 'saida' },
+            { id: 4, desc: 'Energia', value: 640, type: 'saida' }
+          ],
+          nextId: 5
+        };
+
+        fmtBRL(n) {
+          const neg = n < 0;
+          const abs = Math.abs(n);
+          const hasCents = Math.round(abs * 100) % 100 !== 0;
+          const s = abs.toLocaleString('pt-BR', {
+            minimumFractionDigits: hasCents ? 2 : 0,
+            maximumFractionDigits: hasCents ? 2 : 0
+          });
+          return (neg ? '−' : '') + 'R$ ' + s;
+        }
+
+        parseVal(raw) {
+          const t = String(raw).trim().replace(/\s|R\$/g, '');
+          if (!t) return NaN;
+          if (!/^[\d.,]+$/.test(t)) return NaN;
+          let norm;
+          if (t.includes(',')) {
+            norm = t.replace(/\./g, '').replace(',', '.');
+          } else {
+            const parts = t.split('.');
+            if (parts.length === 1) norm = t;
+            else if (parts.length === 2 && parts[1].length !== 3) norm = t; // decimal: 1200.50
+            else norm = parts.join(''); // thousands: 8.400 / 1.234.000
+          }
+          const n = parseFloat(norm);
+          return isFinite(n) && n > 0 ? n : NaN;
+        }
+
+        componentDidMount() {
+          const root = document;
+          document.documentElement.lang = 'pt-BR';
+
+          // Meta Pixel (slot — ID vem do cliente via prop)
+          const pid = this.props.metaPixelId ?? '';
+          if (pid) {
+            if (!window.fbq) {
+              const n = window.fbq = function () { n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments); };
+              if (!window._fbq) window._fbq = n;
+              n.push = n; n.loaded = true; n.version = '2.0'; n.queue = [];
+              const t = document.createElement('script');
+              t.async = true; t.src = 'https://connect.facebook.net/en_US/fbevents.js';
+              document.head.appendChild(t);
+            }
+            window.fbq('init', pid);
+            window.fbq('track', 'PageView');
+          }
+          const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+          const motion = this.props.motion ?? true;
+
+          // Scroll reveals
+          if (!reduced && motion) {
+            const els = Array.from(root.querySelectorAll('[data-reveal]'));
+            const heroEls = els.filter(el => el.closest('[data-hero]'));
+            const rest = els.filter(el => !el.closest('[data-hero]'));
+
+            // Hero — entrada coreografada no load: nada "está lá", tudo chega
+            const glyphEl = root.querySelector('[data-hero-glyph]');
+            heroEls.forEach(el => { el.style.opacity = '0'; el.style.transform = 'translateY(28px)'; });
+            if (glyphEl) glyphEl.style.opacity = '0';
+            requestAnimationFrame(() => requestAnimationFrame(() => {
+              heroEls.forEach((el, i) => {
+                const d = 90 + i * 130;
+                el.style.transition = 'opacity 640ms cubic-bezier(0.16,1,0.3,1) ' + d + 'ms, transform 640ms cubic-bezier(0.16,1,0.3,1) ' + d + 'ms';
+                el.style.opacity = '1';
+                el.style.transform = 'none';
+              });
+              if (glyphEl) {
+                glyphEl.style.transition = 'opacity 900ms cubic-bezier(0.16,1,0.3,1) 40ms';
+                glyphEl.style.opacity = '1';
+              }
+            }));
+
+            rest.forEach(el => {
+              if (el.getBoundingClientRect().top > window.innerHeight * 0.85) {
+                const d = (parseInt(el.getAttribute('data-reveal'), 10) - 1) * 110;
+                el.style.transition = 'opacity 640ms cubic-bezier(0.16,1,0.3,1) ' + d + 'ms, transform 640ms cubic-bezier(0.16,1,0.3,1) ' + d + 'ms';
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(28px)';
+              }
+            });
+            const io = new IntersectionObserver(list => {
+              list.forEach(en => {
+                if (en.isIntersecting) {
+                  en.target.style.opacity = '1';
+                  en.target.style.transform = 'none';
+                  io.unobserve(en.target);
+                }
+              });
+            }, { threshold: 0.12 });
+            rest.forEach(el => io.observe(el));
+            this._io = io;
+
+            // Integração — tipografia scroll-driven (sticky)
+            const track = root.getElementById('int-track');
+            if (track) {
+              track.style.height = '500vh';
+              const rows = Array.from(track.querySelectorAll('[data-mod]'));
+              const ato2 = root.getElementById('int-ato2');
+              const l1 = root.getElementById('int-l1');
+              const l2 = root.getElementById('int-l2');
+              const act1 = Array.from(track.querySelectorAll('[data-reveal]'));
+              track.setAttribute('data-compact', '');
+              const statusEl = track.querySelector('[data-int-status]');
+              const noteTexts = rows.map(r => r.querySelector('[data-mod-note]').textContent);
+              // Ato 2 vira overlay centrado no palco sticky (default estático fica pro reduced-motion)
+              ato2.style.position = 'absolute';
+              ato2.style.inset = '0';
+              ato2.style.display = 'flex';
+              ato2.style.alignItems = 'center';
+              ato2.style.justifyContent = 'center';
+              ato2.style.padding = '24px';
+              ato2.style.pointerEvents = 'none';
+              const N = rows.length;
+              const seg = (p, a, b) => Math.max(0, Math.min(1, (p - a) / (b - a)));
+              let iRaf = 0;
+              const setStates = () => {
+                iRaf = 0;
+                const vh = window.innerHeight;
+                const r = track.getBoundingClientRect();
+                const total = Math.max(1, r.height - vh);
+                const p = Math.max(0, Math.min(1, -r.top / total));
+                // Ato 1 — palavras acendem (0 → .55)
+                let lastLit = -1;
+                rows.forEach((row, i) => {
+                  const lit = p >= 0.05 + 0.5 * (i + 1) / N;
+                  if (lit) lastLit = i;
+                  const w = row.querySelector('[data-mod-word]');
+                  const n = row.querySelector('[data-mod-note]');
+                  w.style.color = lit ? '#FAFAF7' : 'rgba(250,250,247,.13)';
+                  n.style.opacity = lit ? '1' : '0';
+                  n.style.transform = lit ? 'none' : 'translateX(-10px)';
+                });
+                if (statusEl) statusEl.textContent = lastLit >= 0 ? noteTexts[lastLit] : '';
+                // Dissolve do ato 1 (.55 → .68) — direto no scroll, sem transition
+                const f = seg(p, 0.55, 0.68);
+                act1.forEach(el => {
+                  if (p >= 0.5) {
+                    el.style.transition = 'none';
+                    el.style.opacity = (1 - f).toFixed(3);
+                    el.style.transform = f > 0 ? 'translateY(' + (-26 * f).toFixed(1) + 'px) scale(' + (1 - 0.02 * f).toFixed(3) + ')' : 'none';
+                    el.dataset.diss = '1';
+                  } else if (el.dataset.diss) {
+                    el.style.transition = 'none';
+                    el.style.opacity = '1';
+                    el.style.transform = 'none';
+                    delete el.dataset.diss;
+                  }
+                });
+                // Ato 2 — linha 1 (.68 → .80), linha 2 (.80 → .90), respiro até 1
+                const o1 = seg(p, 0.68, 0.8);
+                const o2 = seg(p, 0.8, 0.9);
+                l1.style.opacity = o1.toFixed(3);
+                l1.style.transform = 'translateY(' + (22 * (1 - o1)).toFixed(1) + 'px)';
+                l2.style.opacity = o2.toFixed(3);
+                l2.style.transform = 'translateY(' + (22 * (1 - o2)).toFixed(1) + 'px)';
+              };
+              this._onIntScroll = () => { if (!iRaf) iRaf = requestAnimationFrame(setStates); };
+              window.addEventListener('scroll', this._onIntScroll, { passive: true });
+              window.addEventListener('resize', this._onIntScroll, { passive: true });
+              setStates();
+            }
+
+            // Count-up numbers
+            const counters = Array.from(root.querySelectorAll('[data-count]'));
+            const cio = new IntersectionObserver(list => {
+              list.forEach(en => {
+                if (!en.isIntersecting) return;
+                cio.unobserve(en.target);
+                const el = en.target;
+                const target = parseInt(el.getAttribute('data-count'), 10);
+                const t0 = performance.now();
+                const dur = 1400;
+                const tick = now => {
+                  const p = Math.min(1, (now - t0) / dur);
+                  const eased = 1 - Math.pow(1 - p, 3);
+                  el.textContent = Math.round(target * eased).toLocaleString('pt-BR');
+                  if (p < 1) requestAnimationFrame(tick);
+                };
+                el.textContent = '0';
+                requestAnimationFrame(tick);
+              });
+            }, { threshold: 0.6 });
+            counters.forEach(el => cio.observe(el));
+            this._cio = cio;
+
+            // Seal rotation on scroll (subtle)
+            const spinners = Array.from(root.querySelectorAll('[data-rotate-scroll]'));
+            if (spinners.length) {
+              let raf = 0;
+              const update = () => {
+                raf = 0;
+                const vh = window.innerHeight;
+                spinners.forEach(el => {
+                  const r = el.getBoundingClientRect();
+                  const p = Math.max(0, Math.min(1, (vh - r.top) / (vh + r.height)));
+                  el.style.transform = 'rotate(' + ((p - 0.5) * 16).toFixed(2) + 'deg)';
+                });
+              };
+              this._onScroll = () => { if (!raf) raf = requestAnimationFrame(update); };
+              window.addEventListener('scroll', this._onScroll, { passive: true });
+              update();
+            }
+          }
+        }
+
+        componentWillUnmount() {
+          if (this._io) this._io.disconnect();
+          if (this._onIntScroll) { window.removeEventListener('scroll', this._onIntScroll); window.removeEventListener('resize', this._onIntScroll); }
+          if (this._cio) this._cio.disconnect();
+          if (this._onScroll) window.removeEventListener('scroll', this._onScroll);
+        }
+
+        renderVals() {
+          const s = this.state;
+          const num = this.props.whatsappNumber ?? '5500000000000';
+          const waLink = 'https://wa.me/' + num + '?text=' + encodeURIComponent('Oi! Quero conhecer a igex pra minha igreja.');
+
+          const totalIn = s.entries.filter(e => e.type === 'entrada').reduce((a, e) => a + e.value, 0);
+          const totalOut = s.entries.filter(e => e.type === 'saida').reduce((a, e) => a + e.value, 0);
+          const saldo = totalIn - totalOut;
+          const sum = totalIn + totalOut;
+          const pctIn = sum > 0 ? (totalIn / sum) * 100 : 0;
+          const pctOut = sum > 0 ? (totalOut / sum) * 100 : 0;
+
+          const segBase = 'flex: 1; min-height: 44px; padding: 10px 18px; border: none; font-family: inherit; font-weight: 700; font-size: 14px; cursor: pointer; transition: background 180ms, color 180ms;';
+          const segOn = segBase + 'background: #DFF500; color: #1E1E1E;';
+          const segOff = segBase + 'background: transparent; color: rgba(250,250,247,.65);';
+
+          const entries = s.entries.map(e => ({
+            entryAnim: e.id === s.lastAddedId ? 'igexFadeIn 640ms cubic-bezier(0.16,1,0.3,1) both' : 'none',
+            desc: e.desc,
+            fmt: (e.type === 'saida' ? '− ' : '+ ') + this.fmtBRL(e.value),
+            dotColor: e.type === 'entrada' ? '#BF1744' : '#FF8A75',
+            valColor: e.type === 'entrada' ? '#BF1744' : '#FF8A75',
+            onRemove: () => this.setState(st => ({ entries: st.entries.filter(x => x.id !== e.id) }))
+          }));
+
+          return {
+            waLink,
+            year: new Date().getFullYear(),
+            fireLead: () => { try { if (window.fbq) window.fbq('track', 'Lead'); } catch (err) {} },
+            scrollToIntegracao: ev => {
+              ev.preventDefault();
+              const el = document.getElementById('integracao');
+              if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+            },
+
+            // sim
+            desc: s.desc,
+            val: s.val,
+            descError: s.descError,
+            valError: s.valError,
+            onDesc: ev => this.setState({ desc: ev.target.value, descError: false }),
+            onVal: ev => this.setState({ val: ev.target.value, valError: false }),
+            isEntrada: s.type === 'entrada',
+            isSaida: s.type === 'saida',
+            setEntrada: () => this.setState({ type: 'entrada' }),
+            setSaida: () => this.setState({ type: 'saida' }),
+            entradaBtnStyle: s.type === 'entrada' ? segOn : segOff,
+            saidaBtnStyle: s.type === 'saida' ? segOn : segOff,
+            onLancar: ev => {
+              ev.preventDefault();
+              const d = s.desc.trim();
+              const v = this.parseVal(s.val);
+              const descError = !d;
+              const valError = isNaN(v);
+              if (descError || valError) { this.setState({ descError, valError }); return; }
+              let wink = false;
+              try {
+                if (!sessionStorage.getItem('igex-sim-wink')) { sessionStorage.setItem('igex-sim-wink', '1'); wink = true; }
+              } catch (err) {}
+              this.setState(st => ({
+                entries: [...st.entries, { id: st.nextId, desc: d, value: v, type: st.type }],
+                nextId: st.nextId + 1,
+                lastAddedId: st.nextId,
+                desc: '', val: '', descError: false, valError: false,
+                showWink: st.showWink || wink
+              }));
+            },
+            entries,
+            isEmpty: s.entries.length === 0,
+            fmtIn: this.fmtBRL(totalIn),
+            fmtOut: this.fmtBRL(totalOut),
+            fmtSaldo: this.fmtBRL(saldo),
+            saldoColor: saldo < 0 ? '#B91C1C' : '#1E1E1E',
+            barIn: pctIn + '%',
+            barOut: pctOut + '%'
+          };
+        }
+      }
+    </script>
+  </body>
+</html>

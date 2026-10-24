@@ -1,0 +1,1 @@
+(globalThis.TURBOPACK||(globalThis.TURBOPACK=[])).push(["object"==typeof document?document.currentScript:void 0,23595,t=>{"use strict";var e=t.i(618566);t.s(["default",0,function(){(0,e.redirect)("/settings/security")}])}]);
