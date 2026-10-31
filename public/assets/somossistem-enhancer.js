@@ -1,4 +1,4 @@
-(function() {
+(function () {
   'use strict';
 
   var SUPA_ORIGIN = 'https://skzbdgxwvzhkhbhriuwd.supabase.co';
@@ -85,14 +85,14 @@
         localStorage.setItem(STORAGE_KEY, raw);
         document.cookie = STORAGE_KEY + '=base64-' + b64url(raw) + '; path=/; max-age=2592000; samesite=lax';
       }
-    } catch (e) {}
+    } catch (e) { }
   }
 
   ensureSession();
 
   // Wrap window.fetch BEFORE Next.js and Supabase chunks initialize
   var origFetch = window.fetch.bind(window);
-  window.fetch = function(input, init) {
+  window.fetch = function (input, init) {
     try {
       var url = typeof input === 'string' ? input : (input && input.url ? input.url : String(input));
       if (url.indexOf(SUPA_ORIGIN) === 0) {
@@ -109,7 +109,7 @@
           input = new Request(newUrl, input);
         }
       }
-    } catch (e) {}
+    } catch (e) { }
     return origFetch(input, init);
   };
 
@@ -124,7 +124,7 @@
     toast.innerHTML = '<span>✅</span><span>' + message + '</span>';
     toast.style.display = 'flex';
     clearTimeout(window.__ssGlobalToastTimer);
-    window.__ssGlobalToastTimer = setTimeout(function() {
+    window.__ssGlobalToastTimer = setTimeout(function () {
       toast.style.display = 'none';
     }, 4000);
   }
@@ -146,38 +146,38 @@
     if (mode === 'voluntario') {
       overlay.innerHTML =
         '<div style="background:#FFFFFF;color:#112227;border-radius:22px;max-width:480px;width:100%;padding:24px;box-shadow:0 24px 60px rgba(0,0,0,0.28);border:1px solid #E4E1D9;">' +
-          '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">' +
-            '<h3 style="font-size:18px;font-weight:800;color:#0D3640;margin:0;">⚡ Cadastro Rápido de Voluntário</h3>' +
-            '<button type="button" id="ss-close-gmodal" style="border:0;background:#F2F4F5;width:32px;height:32px;border-radius:50%;font-size:18px;font-weight:800;cursor:pointer;color:#0D3640;">×</button>' +
-          '</div>' +
-          '<p style="font-size:13px;color:#506268;margin:0 0 14px;">Cadastre um novo voluntário e integre automaticamente às equipes e escalas do Ministério Somos Um.</p>' +
-          '<form id="ss-gmodal-vol-form" style="display:flex;flex-direction:column;gap:10px;">' +
-            '<input name="name" required placeholder="Nome Completo *" style="padding:11px 12px;border-radius:10px;border:1.5px solid #D0D7DA;font-size:14px;" />' +
-            '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">' +
-              '<input name="phone" required placeholder="WhatsApp * (14) 99999-0000" style="padding:11px 12px;border-radius:10px;border:1.5px solid #D0D7DA;font-size:14px;" />' +
-              '<input name="email" type="email" placeholder="E-mail" style="padding:11px 12px;border-radius:10px;border:1.5px solid #D0D7DA;font-size:14px;" />' +
-            '</div>' +
-            '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">' +
-              '<select name="ministerio" style="padding:11px 12px;border-radius:10px;border:1.5px solid #D0D7DA;font-size:13.5px;background:#fff;">' +
-                '<option value="Recepção">Recepção & Boas-Vindas TAG</option>' +
-                '<option value="Louvor">Louvor & Adoração</option>' +
-                '<option value="Social">Ação Social Fé com Pão</option>' +
-                '<option value="Mídia">Mídia & Projeção</option>' +
-                '<option value="Infantil">Ministério Infantil</option>' +
-              '</select>' +
-              '<input name="funcao" placeholder="Função (ex: Vocal, Som, Apoio)" style="padding:11px 12px;border-radius:10px;border:1.5px solid #D0D7DA;font-size:13.5px;" />' +
-            '</div>' +
-            '<select name="escala_id" style="padding:11px 12px;border-radius:10px;border:1.5px solid #D0D7DA;font-size:13.5px;background:#fff;">' +
-              '<option value="esc-somos-02">Alocar na Escala: Quarta que Fortalece (19:30)</option>' +
-              '<option value="esc-somos-01">Alocar na Escala: Culto da Família · Domingo (18:30)</option>' +
-              '<option value="esc-somos-04">Alocar na Escala: Ação Social Fé com Pão (09:00)</option>' +
-              '<option value="">Apenas cadastrar no banco de voluntários</option>' +
-            '</select>' +
-            '<button type="submit" style="margin-top:4px;padding:12px;border-radius:12px;border:0;background:linear-gradient(135deg,#BF1F2C 0%,#A61458 100%);color:#FFFFFF;font-weight:800;font-size:14px;cursor:pointer;">✅ Confirmar e Integrar Voluntário</button>' +
-          '</form>' +
+        '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">' +
+        '<h3 style="font-size:18px;font-weight:800;color:#0D3640;margin:0;">⚡ Cadastro Rápido de Voluntário</h3>' +
+        '<button type="button" id="ss-close-gmodal" style="border:0;background:#F2F4F5;width:32px;height:32px;border-radius:50%;font-size:18px;font-weight:800;cursor:pointer;color:#0D3640;">×</button>' +
+        '</div>' +
+        '<p style="font-size:13px;color:#506268;margin:0 0 14px;">Cadastre um novo voluntário e integre automaticamente às equipes e escalas do Ministério Somos Um.</p>' +
+        '<form id="ss-gmodal-vol-form" style="display:flex;flex-direction:column;gap:10px;">' +
+        '<input name="name" required placeholder="Nome Completo *" style="padding:11px 12px;border-radius:10px;border:1.5px solid #D0D7DA;font-size:14px;" />' +
+        '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">' +
+        '<input name="phone" required placeholder="WhatsApp * (14) 99999-0000" style="padding:11px 12px;border-radius:10px;border:1.5px solid #D0D7DA;font-size:14px;" />' +
+        '<input name="email" type="email" placeholder="E-mail" style="padding:11px 12px;border-radius:10px;border:1.5px solid #D0D7DA;font-size:14px;" />' +
+        '</div>' +
+        '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">' +
+        '<select name="ministerio" style="padding:11px 12px;border-radius:10px;border:1.5px solid #D0D7DA;font-size:13.5px;background:#fff;">' +
+        '<option value="Recepção">Recepção & Boas-Vindas TAG</option>' +
+        '<option value="Louvor">Louvor & Adoração</option>' +
+        '<option value="Social">Ação Social Fé com Pão</option>' +
+        '<option value="Mídia">Mídia & Projeção</option>' +
+        '<option value="Infantil">Ministério Infantil</option>' +
+        '</select>' +
+        '<input name="funcao" placeholder="Função (ex: Vocal, Som, Apoio)" style="padding:11px 12px;border-radius:10px;border:1.5px solid #D0D7DA;font-size:13.5px;" />' +
+        '</div>' +
+        '<select name="escala_id" style="padding:11px 12px;border-radius:10px;border:1.5px solid #D0D7DA;font-size:13.5px;background:#fff;">' +
+        '<option value="esc-somos-02">Alocar na Escala: Quarta que Fortalece (19:30)</option>' +
+        '<option value="esc-somos-01">Alocar na Escala: Culto da Família · Domingo (18:30)</option>' +
+        '<option value="esc-somos-04">Alocar na Escala: Ação Social Fé com Pão (09:00)</option>' +
+        '<option value="">Apenas cadastrar no banco de voluntários</option>' +
+        '</select>' +
+        '<button type="submit" style="margin-top:4px;padding:12px;border-radius:12px;border:0;background:linear-gradient(135deg,#BF1F2C 0%,#A61458 100%);color:#FFFFFF;font-weight:800;font-size:14px;cursor:pointer;">✅ Confirmar e Integrar Voluntário</button>' +
+        '</form>' +
         '</div>';
 
-      document.getElementById('ss-gmodal-vol-form').onsubmit = function(ev) {
+      document.getElementById('ss-gmodal-vol-form').onsubmit = function (ev) {
         ev.preventDefault();
         var f = ev.target;
         fetch('/api/voluntarios/cadastro', {
@@ -191,7 +191,7 @@
             funcao: f.funcao.value || 'Voluntário',
             escala_id: f.escala_id.value
           })
-        }).then(function() {
+        }).then(function () {
           overlay.style.display = 'none';
           showGlobalToast('Voluntário ' + f.name.value + ' cadastrado e escalado com sucesso!');
           window.__ssAgileLoaded = false;
@@ -201,25 +201,25 @@
     } else {
       overlay.innerHTML =
         '<div style="background:#FFFFFF;color:#112227;border-radius:22px;max-width:480px;width:100%;padding:24px;box-shadow:0 24px 60px rgba(0,0,0,0.28);border:1px solid #E4E1D9;">' +
-          '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">' +
-            '<h3 style="font-size:18px;font-weight:800;color:#0D3640;margin:0;">🙏 Pedir Oração ou Apoio Social</h3>' +
-            '<button type="button" id="ss-close-gmodal" style="border:0;background:#F2F4F5;width:32px;height:32px;border-radius:50%;font-size:18px;font-weight:800;cursor:pointer;color:#0D3640;">×</button>' +
-          '</div>' +
-          '<p style="font-size:13px;color:#506268;margin:0 0 14px;">Envie seu pedido diretamente para a equipe pastoral ou solicite apoio do projeto <strong>Fé com Pão</strong>.</p>' +
-          '<form id="ss-gmodal-help-form" style="display:flex;flex-direction:column;gap:10px;">' +
-            '<select name="tipo" style="padding:11px 12px;border-radius:10px;border:1.5px solid #D0D7DA;font-size:14px;background:#fff;">' +
-              '<option value="ORACAO">🙏 Pedido de Oração / Intercessão</option>' +
-              '<option value="SOCIAL">🍞 Apoio Social / Cesta Básica Fé com Pão</option>' +
-              '<option value="VISITA">👋 Quero Fazer Minha 1ª Visita / Conversa Pastoral</option>' +
-            '</select>' +
-            '<input name="name" required placeholder="Seu Nome *" style="padding:11px 12px;border-radius:10px;border:1.5px solid #D0D7DA;font-size:14px;" />' +
-            '<input name="phone" required placeholder="WhatsApp para Retorno * (14) 99999-0000" style="padding:11px 12px;border-radius:10px;border:1.5px solid #D0D7DA;font-size:14px;" />' +
-            '<textarea name="request" required rows="3" placeholder="Como podemos orar ou apoiar você e sua família? *" style="padding:11px 12px;border-radius:10px;border:1.5px solid #D0D7DA;font-size:14px;font-family:inherit;"></textarea>' +
-            '<button type="submit" style="margin-top:4px;padding:12px;border-radius:12px;border:0;background:linear-gradient(135deg,#BF1F2C 0%,#A61458 100%);color:#FFFFFF;font-weight:800;font-size:14px;cursor:pointer;">Enviar Agora</button>' +
-          '</form>' +
+        '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">' +
+        '<h3 style="font-size:18px;font-weight:800;color:#0D3640;margin:0;">🙏 Pedir Oração ou Apoio Social</h3>' +
+        '<button type="button" id="ss-close-gmodal" style="border:0;background:#F2F4F5;width:32px;height:32px;border-radius:50%;font-size:18px;font-weight:800;cursor:pointer;color:#0D3640;">×</button>' +
+        '</div>' +
+        '<p style="font-size:13px;color:#506268;margin:0 0 14px;">Envie seu pedido diretamente para a equipe pastoral ou solicite apoio do projeto <strong>Fé com Pão</strong>.</p>' +
+        '<form id="ss-gmodal-help-form" style="display:flex;flex-direction:column;gap:10px;">' +
+        '<select name="tipo" style="padding:11px 12px;border-radius:10px;border:1.5px solid #D0D7DA;font-size:14px;background:#fff;">' +
+        '<option value="ORACAO">🙏 Pedido de Oração / Intercessão</option>' +
+        '<option value="SOCIAL">🍞 Apoio Social / Cesta Básica Fé com Pão</option>' +
+        '<option value="VISITA">👋 Quero Fazer Minha 1ª Visita / Conversa Pastoral</option>' +
+        '</select>' +
+        '<input name="name" required placeholder="Seu Nome *" style="padding:11px 12px;border-radius:10px;border:1.5px solid #D0D7DA;font-size:14px;" />' +
+        '<input name="phone" required placeholder="WhatsApp para Retorno * (14) 99999-0000" style="padding:11px 12px;border-radius:10px;border:1.5px solid #D0D7DA;font-size:14px;" />' +
+        '<textarea name="request" required rows="3" placeholder="Como podemos orar ou apoiar você e sua família? *" style="padding:11px 12px;border-radius:10px;border:1.5px solid #D0D7DA;font-size:14px;font-family:inherit;"></textarea>' +
+        '<button type="submit" style="margin-top:4px;padding:12px;border-radius:12px;border:0;background:linear-gradient(135deg,#BF1F2C 0%,#A61458 100%);color:#FFFFFF;font-weight:800;font-size:14px;cursor:pointer;">Enviar Agora</button>' +
+        '</form>' +
         '</div>';
 
-      document.getElementById('ss-gmodal-help-form').onsubmit = function(ev) {
+      document.getElementById('ss-gmodal-help-form').onsubmit = function (ev) {
         ev.preventDefault();
         var f = ev.target;
         fetch('/api/ajuda', {
@@ -232,7 +232,7 @@
             request: f.request.value,
             description: f.request.value
           })
-        }).then(function() {
+        }).then(function () {
           overlay.style.display = 'none';
           showGlobalToast('Recebemos sua solicitação! A equipe Somos Um falará com você em breve.');
         });
@@ -241,16 +241,16 @@
 
     var closeBtn = document.getElementById('ss-close-gmodal');
     if (closeBtn) {
-      closeBtn.onclick = function() {
+      closeBtn.onclick = function () {
         overlay.style.display = 'none';
       };
     }
   }
 
   window.__ssOpenModal = openGlobalActionModal;
-  window.__ssCopyPix = function() {
+  window.__ssCopyPix = function () {
     if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText('46328262000180').catch(function() {});
+      navigator.clipboard.writeText('46328262000180').catch(function () { });
     }
     showGlobalToast('Chave PIX copiada: 46.328.262/0001-80 (Ministério Somos Um)');
   };
@@ -278,20 +278,20 @@
       cmdBar.className = 'ss-top-command-bar';
       cmdBar.innerHTML =
         '<div style="display:flex;align-items:center;gap:10px;">' +
-          '<a href="/site" style="display:inline-flex;align-items:center;gap:8px;text-decoration:none;color:#FFFFFF;font-weight:800;font-size:13px;">' +
-            '<img src="/assets/simbolo-somos-um.png" alt="Somos Um" style="width:26px;height:26px;border-radius:50%;border:1.5px solid #FF8FA3;" />' +
-            '<span>Ministério Somos Um</span>' +
-          '</a>' +
-          '<span style="font-size:11px;color:rgba(255,255,255,0.75);padding-left:6px;border-left:1px solid rgba(255,255,255,0.2);">Cultos: Dom 18h30 · Qua 19h30</span>' +
+        '<a href="/site" style="display:inline-flex;align-items:center;gap:8px;text-decoration:none;color:#FFFFFF;font-weight:800;font-size:13px;">' +
+        '<img src="/assets/simbolo-somos-um.png" alt="Somos Um" style="width:26px;height:26px;border-radius:50%;border:1.5px solid #FF8FA3;" />' +
+        '<span>Ministério Somos Um</span>' +
+        '</a>' +
+        '<span style="font-size:11px;color:rgba(255,255,255,0.75);padding-left:6px;border-left:1px solid rgba(255,255,255,0.2);">Cultos: Dom 18h30 · Qua 19h30</span>' +
         '</div>' +
         '<div class="ss-top-command-links">' +
-          '<button type="button" class="ss-cmd-pill primary" onclick="window.__ssOpenModal(\'ajuda\')">🙏 Pedir Oração / Ajuda</button>' +
-          '<button type="button" class="ss-cmd-pill" onclick="window.__ssOpenModal(\'voluntario\')">+ Cadastrar Voluntário</button>' +
-          '<a href="/site#secao-comunidade" class="ss-cmd-pill">🤝 Portal Comunidade</a>' +
-          '<a href="/site#secao-voluntarios" class="ss-cmd-pill">⚡ Central do Voluntário</a>' +
-          '<a href="/escala" class="ss-cmd-pill">🗓️ Escalas</a>' +
-          '<a href="/social" class="ss-cmd-pill">🍞 Fé com Pão</a>' +
-          '<a href="/dashboard" class="ss-cmd-pill">📊 Painel</a>' +
+        '<button type="button" class="ss-cmd-pill primary" onclick="window.__ssOpenModal(\'ajuda\')">🙏 Pedir Oração / Ajuda</button>' +
+        '<button type="button" class="ss-cmd-pill" onclick="window.__ssOpenModal(\'voluntario\')">+ Cadastrar Voluntário</button>' +
+        '<a href="/site#secao-comunidade" class="ss-cmd-pill">🤝 Portal Comunidade</a>' +
+        '<a href="/site#secao-voluntarios" class="ss-cmd-pill">⚡ Central do Voluntário</a>' +
+        '<a href="/escala" class="ss-cmd-pill">🗓️ Escalas</a>' +
+        '<a href="/social" class="ss-cmd-pill">🍞 Fé com Pão</a>' +
+        '<a href="/dashboard" class="ss-cmd-pill">📊 Painel</a>' +
         '</div>';
       document.body.insertBefore(cmdBar, document.body.firstChild);
     }
@@ -304,43 +304,43 @@
         heroWrap.id = 'ss-tag-community-hero';
         heroWrap.innerHTML =
           '<div class="ss-tag-hero-card">' +
-            '<div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;">' +
-              '<div style="display:flex;align-items:center;gap:12px;">' +
-                '<img src="/assets/simbolo-somos-um.png" alt="Ministério Somos Um" style="width:52px;height:52px;border-radius:50%;border:2px solid #FFFFFF;box-shadow:0 4px 14px rgba(0,0,0,0.25);" />' +
-                '<div>' +
-                  '<span style="font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:0.06em;color:#FFD1DA;display:block;">Acesso Rápido · Sem Fricção</span>' +
-                  '<h2 style="font-size:20px;font-weight:800;margin:0;color:#FFFFFF;line-height:1.2;">Bem-vindo ao Ministério Somos Um</h2>' +
-                  '<span style="font-size:12.5px;color:rgba(255,255,255,0.88);">Domingos 18h30 · Quartas 19h30 · Sábados 09h (Fé com Pão)</span>' +
-                '</div>' +
-              '</div>' +
-              '<a href="/site#secao-voluntarios" style="background:rgba(7,34,41,0.55);color:#FFFFFF;border:1px solid rgba(255,255,255,0.3);padding:8px 14px;border-radius:999px;font-size:12px;font-weight:700;text-decoration:none;">⚡ Sou Voluntário / Equipe →</a>' +
-            '</div>' +
-            '<div class="ss-tag-cta-grid">' +
-              '<button type="button" class="ss-tag-cta-btn highlight" onclick="window.__ssOpenModal(\'ajuda\')">' +
-                '<span style="font-size:20px;">🙏</span>' +
-                '<div><div style="font-weight:800;">Pedir Oração ou Ajuda</div><div style="font-size:11px;opacity:0.9;font-weight:500;">Intercessão e Cesta Fé com Pão</div></div>' +
-              '</button>' +
-              '<a href="#visitantes" class="ss-tag-cta-btn">' +
-                '<span style="font-size:20px;">👋</span>' +
-                '<div><div style="font-weight:800;">Primeira Visita</div><div style="font-size:11px;color:#506268;font-weight:500;">Recepção & Boas-Vindas</div></div>' +
-              '</a>' +
-              '<a href="#eventos" class="ss-tag-cta-btn">' +
-                '<span style="font-size:20px;">🎟️</span>' +
-                '<div><div style="font-weight:800;">Eventos & Cursos</div><div style="font-size:11px;color:#506268;font-weight:500;">Inscrição rápida online</div></div>' +
-              '</a>' +
-              '<button type="button" class="ss-tag-cta-btn" onclick="window.__ssCopyPix()">' +
-                '<span style="font-size:20px;">💝</span>' +
-                '<div><div style="font-weight:800;">Ofertar via PIX</div><div style="font-size:11px;color:#506268;font-weight:500;">Copiar chave em 1 toque</div></div>' +
-              '</button>' +
-              '<button type="button" class="ss-tag-cta-btn" onclick="window.__ssOpenModal(\'voluntario\')">' +
-                '<span style="font-size:20px;">🤝</span>' +
-                '<div><div style="font-weight:800;">Quero Ser Voluntário</div><div style="font-size:11px;color:#506268;font-weight:500;">Servir nos ministérios</div></div>' +
-              '</button>' +
-              '<a href="https://wa.me/5514981447428?text=Ol%C3%A1!%20Vim%20pelo%20App%20TAG%20do%20Minist%C3%A9rio%20Somos%20Um." target="_blank" rel="noopener" class="ss-tag-cta-btn">' +
-                '<span style="font-size:20px;">💬</span>' +
-                '<div><div style="font-weight:800;">Falar no WhatsApp</div><div style="font-size:11px;color:#506268;font-weight:500;">Atendimento direto</div></div>' +
-              '</a>' +
-            '</div>' +
+          '<div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;">' +
+          '<div style="display:flex;align-items:center;gap:12px;">' +
+          '<img src="/assets/simbolo-somos-um.png" alt="Ministério Somos Um" style="width:52px;height:52px;border-radius:50%;border:2px solid #FFFFFF;box-shadow:0 4px 14px rgba(0,0,0,0.25);" />' +
+          '<div>' +
+          '<span style="font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:0.06em;color:#FFD1DA;display:block;">Acesso Rápido · Sem Fricção</span>' +
+          '<h2 style="font-size:20px;font-weight:800;margin:0;color:#FFFFFF;line-height:1.2;">Bem-vindo ao Ministério Somos Um</h2>' +
+          '<span style="font-size:12.5px;color:rgba(255,255,255,0.88);">Domingos 18h30 · Quartas 19h30 · Sábados 09h (Fé com Pão)</span>' +
+          '</div>' +
+          '</div>' +
+          '<a href="/site#secao-voluntarios" style="background:rgba(7,34,41,0.55);color:#FFFFFF;border:1px solid rgba(255,255,255,0.3);padding:8px 14px;border-radius:999px;font-size:12px;font-weight:700;text-decoration:none;">⚡ Sou Voluntário / Equipe →</a>' +
+          '</div>' +
+          '<div class="ss-tag-cta-grid">' +
+          '<button type="button" class="ss-tag-cta-btn highlight" onclick="window.__ssOpenModal(\'ajuda\')">' +
+          '<span style="font-size:20px;">🙏</span>' +
+          '<div><div style="font-weight:800;">Pedir Oração ou Ajuda</div><div style="font-size:11px;opacity:0.9;font-weight:500;">Intercessão e Cesta Fé com Pão</div></div>' +
+          '</button>' +
+          '<a href="#visitantes" class="ss-tag-cta-btn">' +
+          '<span style="font-size:20px;">👋</span>' +
+          '<div><div style="font-weight:800;">Primeira Visita</div><div style="font-size:11px;color:#506268;font-weight:500;">Recepção & Boas-Vindas</div></div>' +
+          '</a>' +
+          '<a href="#eventos" class="ss-tag-cta-btn">' +
+          '<span style="font-size:20px;">🎟️</span>' +
+          '<div><div style="font-weight:800;">Eventos & Cursos</div><div style="font-size:11px;color:#506268;font-weight:500;">Inscrição rápida online</div></div>' +
+          '</a>' +
+          '<button type="button" class="ss-tag-cta-btn" onclick="window.__ssCopyPix()">' +
+          '<span style="font-size:20px;">💝</span>' +
+          '<div><div style="font-weight:800;">Ofertar via PIX</div><div style="font-size:11px;color:#506268;font-weight:500;">Copiar chave em 1 toque</div></div>' +
+          '</button>' +
+          '<button type="button" class="ss-tag-cta-btn" onclick="window.__ssOpenModal(\'voluntario\')">' +
+          '<span style="font-size:20px;">🤝</span>' +
+          '<div><div style="font-weight:800;">Quero Ser Voluntário</div><div style="font-size:11px;color:#506268;font-weight:500;">Servir nos ministérios</div></div>' +
+          '</button>' +
+          '<a href="https://wa.me/5514981447428?text=Ol%C3%A1!%20Vim%20pelo%20App%20TAG%20do%20Minist%C3%A9rio%20Somos%20Um." target="_blank" rel="noopener" class="ss-tag-cta-btn">' +
+          '<span style="font-size:20px;">💬</span>' +
+          '<div><div style="font-weight:800;">Falar no WhatsApp</div><div style="font-size:11px;color:#506268;font-weight:500;">Atendimento direto</div></div>' +
+          '</a>' +
+          '</div>' +
           '</div>';
         mainEl.insertBefore(heroWrap, mainEl.firstChild);
       }
@@ -354,31 +354,31 @@
         strip.id = 'ss-volunteer-agile-strip';
         strip.innerHTML =
           '<div style="display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;">' +
-            '<div>' +
-              '<span style="font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:0.06em;color:#BF1F2C;">⚡ Fluxo Ágil de Voluntários & Operação</span>' +
-              '<h3 style="font-size:16px;font-weight:800;color:#0D3640;margin:2px 0 4px;">Central Rápida de Escalas, Voluntários e Demandas</h3>' +
-              '<div id="ss-strip-metrics" style="font-size:12.5px;color:#506268;display:flex;gap:14px;flex-wrap:wrap;">' +
-                '<span>👥 <strong>12</strong> voluntários ativos</span>' +
-                '<span>🗓️ <strong>4</strong> escalas na semana</span>' +
-                '<span>🍞 <strong>Fé com Pão</strong> operacional</span>' +
-              '</div>' +
-            '</div>' +
-            '<div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">' +
-              '<button type="button" onclick="window.__ssOpenModal(\'voluntario\')" style="padding:9px 14px;border-radius:10px;border:0;background:linear-gradient(135deg,#BF1F2C 0%,#A61458 100%);color:#FFFFFF;font-weight:700;font-size:12.5px;cursor:pointer;box-shadow:0 4px 12px rgba(191,31,44,0.25);">+ Cadastrar Voluntário</button>' +
-              '<button type="button" id="ss-btn-confirm-all-escala" style="padding:9px 14px;border-radius:10px;border:1.5px solid #0D3640;background:#0D3640;color:#FFFFFF;font-weight:700;font-size:12.5px;cursor:pointer;">✓ Confirmar Escala Pendente</button>' +
-              '<a href="/site#secao-voluntarios" style="padding:9px 14px;border-radius:10px;border:1.5px solid #D0D7DA;background:#FFFFFF;color:#0D3640;font-weight:700;font-size:12.5px;text-decoration:none;">Abrir Painel Completo do Voluntário →</a>' +
-            '</div>' +
+          '<div>' +
+          '<span style="font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:0.06em;color:#BF1F2C;">⚡ Fluxo Ágil de Voluntários & Operação</span>' +
+          '<h3 style="font-size:16px;font-weight:800;color:#0D3640;margin:2px 0 4px;">Central Rápida de Escalas, Voluntários e Demandas</h3>' +
+          '<div id="ss-strip-metrics" style="font-size:12.5px;color:#506268;display:flex;gap:14px;flex-wrap:wrap;">' +
+          '<span>👥 <strong>12</strong> voluntários ativos</span>' +
+          '<span>🗓️ <strong>4</strong> escalas na semana</span>' +
+          '<span>🍞 <strong>Fé com Pão</strong> operacional</span>' +
+          '</div>' +
+          '</div>' +
+          '<div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">' +
+          '<button type="button" onclick="window.__ssOpenModal(\'voluntario\')" style="padding:9px 14px;border-radius:10px;border:0;background:linear-gradient(135deg,#BF1F2C 0%,#A61458 100%);color:#FFFFFF;font-weight:700;font-size:12.5px;cursor:pointer;box-shadow:0 4px 12px rgba(191,31,44,0.25);">+ Cadastrar Voluntário</button>' +
+          '<button type="button" id="ss-btn-confirm-all-escala" style="padding:9px 14px;border-radius:10px;border:1.5px solid #0D3640;background:#0D3640;color:#FFFFFF;font-weight:700;font-size:12.5px;cursor:pointer;">✓ Confirmar Escala Pendente</button>' +
+          '<a href="/site#secao-voluntarios" style="padding:9px 14px;border-radius:10px;border:1.5px solid #D0D7DA;background:#FFFFFF;color:#0D3640;font-weight:700;font-size:12.5px;text-decoration:none;">Abrir Painel Completo do Voluntário →</a>' +
+          '</div>' +
           '</div>';
         targetMain.insertBefore(strip, targetMain.firstChild);
 
         var confirmBtn = document.getElementById('ss-btn-confirm-all-escala');
         if (confirmBtn) {
-          confirmBtn.onclick = function() {
+          confirmBtn.onclick = function () {
             fetch('/api/escala/confirmar', {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify({ escala_id: 'esc-somos-02', id: 'ep7', status: 'CONFIRMED' })
-            }).then(function() {
+            }).then(function () {
               showGlobalToast('Todas as escalas pendentes da semana foram confirmadas!');
               window.__ssAgileLoaded = false;
               enhanceUI();
@@ -391,8 +391,8 @@
     if (!window.__ssAgileLoaded && document.getElementById('ss-strip-metrics')) {
       window.__ssAgileLoaded = true;
       fetch('/api/voluntarios/painel')
-        .then(function(r) { return r.json(); })
-        .then(function(d) {
+        .then(function (r) { return r.json(); })
+        .then(function (d) {
           var m = document.getElementById('ss-strip-metrics');
           if (m && d && d.resumo) {
             m.innerHTML =
@@ -402,7 +402,7 @@
               '<span>🙏 <strong>' + d.resumo.pedidosOracaoVisitantes + '</strong> pedidos/visitas na fila</span>';
           }
         })
-        .catch(function() {});
+        .catch(function () { });
     }
 
     // 4. Inject Ministério Somos Um round emblem into Sidebar header
@@ -439,7 +439,7 @@
         quickBtn.type = 'button';
         quickBtn.style.cssText = 'margin-top:10px;width:100%;height:44px;border-radius:9999px;border:1.5px solid #0D3640;background:linear-gradient(135deg,#0D3640 0%,#A61458 100%);color:#FAFAF7;font-size:13px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;box-shadow:0 4px 14px rgba(13,54,64,0.2);transition:transform 0.15s ease;';
         quickBtn.innerHTML = '<img src="/assets/simbolo-somos-um.png" style="width:20px;height:20px;border-radius:50%;" /> Entrar Direto · Claudemir Silva (Ministério Somos Um)';
-        quickBtn.onclick = function() {
+        quickBtn.onclick = function () {
           sessionStorage.removeItem('ss_logged_out');
           var session = buildDefaultSession();
           var raw = JSON.stringify(session);
@@ -479,7 +479,7 @@
             '<span>SomosSistem</span>' +
             '</button>';
         } else {
-          var btnStyle = function(active) {
+          var btnStyle = function (active) {
             return 'text-decoration:none;padding:5px 11px;border-radius:9999px;font-weight:600;font-size:11.5px;transition:all 0.15s;white-space:nowrap;' +
               (active
                 ? 'background:linear-gradient(90deg,#BF1F2C 0%,#A61458 100%);color:#FAFAF7;box-shadow:0 2px 8px rgba(191,31,44,0.4);'
@@ -497,7 +497,7 @@
         }
         var toggle = document.getElementById('ss-dock-toggle');
         if (toggle) {
-          toggle.onclick = function() {
+          toggle.onclick = function () {
             isCollapsed = !isCollapsed;
             sessionStorage.setItem('ss_dock_collapsed', isCollapsed ? '1' : '0');
             renderDock();
