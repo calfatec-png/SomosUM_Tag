@@ -13556,7 +13556,7 @@
     "auditoria": [
       {
         "id": "sa_aud_01",
-        "quando": "2026-10-23T22:09:14.984Z",
+        "quando": "2026-10-31T14:31:55.633Z",
         "resumo": "Habilitou todos os módulos do Plano Completo SomosSistem Pro",
         "sensivel": false,
         "igreja": "Ministério Somos Um",
@@ -13570,7 +13570,7 @@
       },
       {
         "id": "sa_aud_02",
-        "quando": "2026-10-23T06:09:14.985Z",
+        "quando": "2026-10-30T22:31:55.634Z",
         "resumo": "Provisionou 200 TAGs Placa NFC para Ministério Somos Um",
         "sensivel": false,
         "igreja": "Ministério Somos Um",
@@ -13584,7 +13584,7 @@
       },
       {
         "id": "sa_aud_03",
-        "quando": "2026-10-22T08:09:14.985Z",
+        "quando": "2026-10-30T00:31:55.634Z",
         "resumo": "Atualizou identidade visual e paleta oficial SomosSistem (#BF1F2C · #0D3640)",
         "sensivel": true,
         "igreja": "Plataforma",
@@ -13605,7 +13605,7 @@
         "duracao": 2480,
         "tamanho": 412800000,
         "envio": "enviado",
-        "criadoEm": "2026-10-22T00:09:14.985Z",
+        "criadoEm": "2026-10-29T16:31:55.634Z",
         "visto": true,
         "versoes": [
           {
@@ -13620,9 +13620,9 @@
               "lut": true,
               "som": "automatico"
             },
-            "criado_em": "2026-10-22T00:09:14.985Z",
-            "pronto_em": "2026-10-22T00:17:14.985Z",
-            "visto_em": "2026-10-23T00:09:14.985Z",
+            "criado_em": "2026-10-29T16:31:55.634Z",
+            "pronto_em": "2026-10-29T16:39:55.634Z",
+            "visto_em": "2026-10-30T16:31:55.634Z",
             "substituida_em": null,
             "falha": null
           }
@@ -13633,20 +13633,20 @@
       {
         "conversa_id": "conv-somos-01",
         "titulo": "Resumo de Engajamento e Doações · Ministério Somos Um",
-        "atualizada_em": "2026-10-23T23:39:14.985Z",
+        "atualizada_em": "2026-10-31T16:01:55.634Z",
         "pendencia": false,
         "mensagens": [
           {
             "id": "msg-1",
             "papel": "user",
             "texto": "Qual o panorama atual do Ministério Somos Um na plataforma SomosSistem?",
-            "criada_em": "2026-10-23T23:38:14.985Z"
+            "criada_em": "2026-10-31T16:00:55.634Z"
           },
           {
             "id": "msg-2",
             "papel": "assistant",
             "texto": "O **Ministério Somos Um (Botucatu)** conta atualmente com **139 membros ativos**, **142 registros de captação via TAG NFC** (visitantes, pedidos de oração e decisões), **25 ministérios estruturados** e **R$ 14.210,50 em entradas financeiras conferidas** neste mês. Todos os módulos do **SomosSistem Pro** estão ativos e operando sem pendências.",
-            "criada_em": "2026-10-23T23:39:14.985Z"
+            "criada_em": "2026-10-31T16:01:55.634Z"
           }
         ]
       }

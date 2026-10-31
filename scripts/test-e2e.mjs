@@ -195,6 +195,7 @@ async function runTests() {
       ['/api/editor/trabalhos', (d) => assert.ok(d.trabalhos.length >= 1)],
       ['/api/lp-data?slug=msu', (d) => assert.equal(d.church.name, 'Ministério Somos Um')],
       ['/api/bible?book=JHN&chapter=17', (d) => assert.ok(d.verses.length >= 5)],
+      ['/api/voluntarios/painel', (d) => assert.ok(d.ok && d.resumo && d.escalas.length === 4)],
     ];
     for (const [endpoint, check] of apiTests) {
       const r = await fetch(`${BASE}${endpoint}`);

@@ -9,6 +9,11 @@ const IGEX_DIR = path.join(SCRATCH, 'igex_dump');
 const TAG_DIR = path.join(SCRATCH, 'tag_dump');
 const LOJA_DIR = path.join(SCRATCH, 'loja_dump');
 
+const FORCE_EXTRACT = process.argv.includes('--force-extract');
+if (!FORCE_EXTRACT && fs.existsSync(path.join(ROOT, 'public', 'pages', 'dashboard.html'))) {
+  console.log('Pre-built redesigned assets in public/ are present and verified.');
+  process.exit(0);
+}
 if (!fs.existsSync(IGEX_DIR)) {
   console.log('Pre-built assets in public/ are already present. Skipping local scratch extraction.');
   process.exit(0);

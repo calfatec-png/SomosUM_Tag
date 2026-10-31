@@ -728,7 +728,7 @@ async function handleRpc(req, res, rpcName) {
   return sendJson(res, 200, db.rpcs?.[rpcName] ?? []);
 }
 
-// Generate dynamic Escalas data relative to today
+// Generate dynamic Escalas data relative to today (with persistent confirmation & volunteer overrides)
 function getEscalasData() {
   const now = new Date();
   const fmtDate = (offsetDays) => {
@@ -736,7 +736,7 @@ function getEscalasData() {
     return d.toISOString().slice(0, 10);
   };
 
-  return [
+  const base = [
     {
       id: 'esc-somos-01',
       title: 'Culto da Família · Domingo',
@@ -744,9 +744,6 @@ function getEscalasData() {
       start_time: '18:30',
       ministry_name: 'Louvor & Adoração Somos Um',
       ministry_color: '#BF1F2C',
-      total: 4,
-      confirmed: 4,
-      pending: 0,
       pessoas: [
         { id: 'ep1', pessoa_id: '59a00c59-0f41-4dfd-9b66-cb2e43c37543', nome: 'Pastor Andre', funcao: 'Ministro de Louvor', status: 'CONFIRMED', desde: fmtDate(-5) },
         { id: 'ep2', pessoa_id: '2d80ef13-a56d-414b-bd73-98e68d40cebd', nome: 'Sunamita Martins', funcao: 'Vocal', status: 'CONFIRMED', desde: fmtDate(-4) },
@@ -761,9 +758,6 @@ function getEscalasData() {
       start_time: '19:30',
       ministry_name: 'Recepção & Boas-Vindas TAG',
       ministry_color: '#A61458',
-      total: 3,
-      confirmed: 2,
-      pending: 1,
       pessoas: [
         { id: 'ep5', pessoa_id: CLAUDEMIR_ID, nome: 'Claudemir Silva', funcao: 'Coordenação TAG & Acolhimento', status: 'CONFIRMED', desde: fmtDate(-3) },
         { id: 'ep6', pessoa_id: '2d80ef13-a56d-414b-bd73-98e68d40cebd', nome: 'Sunamita Martins', funcao: 'Boas-Vindas Porta Central', status: 'CONFIRMED', desde: fmtDate(-2) },
@@ -777,9 +771,6 @@ function getEscalasData() {
       start_time: '18:30',
       ministry_name: 'Mídia, Projeção & Transmissão',
       ministry_color: '#0D3640',
-      total: 3,
-      confirmed: 3,
-      pending: 0,
       pessoas: [
         { id: 'ep8', pessoa_id: CLAUDEMIR_ID, nome: 'Claudemir Silva', funcao: 'Direção de Corte & Live', status: 'CONFIRMED', desde: fmtDate(-4) },
         { id: 'ep9', pessoa_id: '5c42c6ae-7d4d-4107-9c8d-3805bccebbfc', nome: 'Ricardo Colauto', funcao: 'Áudio Broadcast', status: 'CONFIRMED', desde: fmtDate(-3) },
@@ -793,9 +784,6 @@ function getEscalasData() {
       start_time: '09:00',
       ministry_name: 'Fé com Pão · Social',
       ministry_color: '#BF0F70',
-      total: 3,
-      confirmed: 3,
-      pending: 0,
       pessoas: [
         { id: 'ep11', pessoa_id: CLAUDEMIR_ID, nome: 'Claudemir Silva', funcao: 'Coordenação de Entregas', status: 'CONFIRMED', desde: fmtDate(-10) },
         { id: 'ep12', pessoa_id: '2d80ef13-a56d-414b-bd73-98e68d40cebd', nome: 'Sunamita Martins', funcao: 'Cadastro de Famílias', status: 'CONFIRMED', desde: fmtDate(-10) },
@@ -803,6 +791,28 @@ function getEscalasData() {
       ],
     },
   ];
+
+  const statusOverrides = db.escala_status_overrides || {};
+  const extraPessoas = db.escala_extra_pessoas || {};
+
+  return base.map((esc) => {
+    const extras = Array.isArray(extraPessoas[esc.id]) ? extraPessoas[esc.id] : [];
+    const pessoas = [...esc.pessoas, ...extras].map((p) => {
+      const overrideKey = `${esc.id}:${p.id}`;
+      const personKey = `${esc.id}:${p.pessoa_id}`;
+      const newStatus = statusOverrides[overrideKey] || statusOverrides[personKey] || p.status;
+      return { ...p, status: newStatus };
+    });
+    const confirmed = pessoas.filter((p) => p.status === 'CONFIRMED').length;
+    const pending = pessoas.length - confirmed;
+    return {
+      ...esc,
+      total: pessoas.length,
+      confirmed,
+      pending,
+      pessoas,
+    };
+  });
 }
 
 // Built-in Portuguese Bible verses for TAG Bible reader (/api/bible)
@@ -836,9 +846,200 @@ async function handleApi(req, res, pathname, searchParams) {
     }
   }
 
-  // 2. Escalas (/api/escala)
+  // 2. Escalas (/api/escala & /api/escala/confirmar)
   if (pathname === '/api/escala') {
     return sendJson(res, 200, { linked: true, data: getEscalasData() });
+  }
+
+  if (pathname === '/api/escala/confirmar' && req.method === 'POST') {
+    const body = await readBody(req);
+    db.escala_status_overrides = db.escala_status_overrides || {};
+    db.escala_extra_pessoas = db.escala_extra_pessoas || {};
+    const escalaId = body.escala_id || 'esc-somos-02';
+    if (body.action === 'add_volunteer' && body.nome) {
+      db.escala_extra_pessoas[escalaId] = db.escala_extra_pessoas[escalaId] || [];
+      db.escala_extra_pessoas[escalaId].push({
+        id: `ep_${Date.now()}`,
+        pessoa_id: body.pessoa_id || crypto.randomUUID(),
+        nome: body.nome,
+        funcao: body.funcao || 'Voluntário Escalado',
+        status: body.status || 'CONFIRMED',
+        desde: new Date().toISOString().slice(0, 10),
+      });
+    } else {
+      const key = `${escalaId}:${body.id || body.pessoa_id || 'ep7'}`;
+      db.escala_status_overrides[key] = body.status || 'CONFIRMED';
+    }
+    persistDb();
+    return sendJson(res, 200, { ok: true, linked: true, data: getEscalasData() });
+  }
+
+  // 2b. Painel de Operação & Voluntários (/api/voluntarios/painel, /api/voluntarios/cadastro, /api/voluntarios/demanda, /api/ajuda)
+  if (pathname === '/api/voluntarios/painel' && req.method === 'GET') {
+    const escalas = getEscalasData();
+    const ministerios = (db.tables.ministery || []).filter((m) => m.church_id === MSU_ID);
+    const userMin = db.tables.user_ministery || [];
+    const profiles = (db.tables.profiles || []).filter((p) => p.church_id === MSU_ID && p.active !== false);
+    const voluntarios = profiles.map((p) => {
+      const mins = userMin
+        .filter((um) => um.user_id === p.id)
+        .map((um) => ministerios.find((m) => m.id === um.ministery_id)?.name)
+        .filter(Boolean);
+      return {
+        id: p.id,
+        name: p.name,
+        email: p.email || '',
+        phone: p.phone || '(14) 98144-7428',
+        role: p.role || 'VOLUNTÁRIO',
+        ministerios: mins.length ? mins : ['Acolhimento & Boas-Vindas'],
+        created_at: p.created_at,
+      };
+    });
+    const demandasSociais = (db.tables.social_request || []).filter((r) => r.church_id === MSU_ID);
+    const demandasCaptacao = (db.tables.captacao || []).filter((c) => c.church_id === MSU_ID);
+    const eventos = (db.tables.evento || []).filter((e) => e.church_id === MSU_ID && !e.arquivado_em);
+    const grupos = (db.tables.church_lp_grupo || []).filter((g) => g.church_id === MSU_ID);
+
+    return sendJson(res, 200, {
+      ok: true,
+      resumo: {
+        totalVoluntarios: voluntarios.length,
+        totalMinisterios: ministerios.length,
+        escalasAtivas: escalas.length,
+        confirmacoesPendentes: escalas.reduce((acc, e) => acc + (e.pending || 0), 0),
+        demandasSociaisPendentes: demandasSociais.filter((d) => d.status !== 'CONCLUIDO' && d.status !== 'ENTREGUE').length,
+        pedidosOracaoVisitantes: demandasCaptacao.filter((c) => c.status === 'NOVO').length,
+      },
+      escalas,
+      ministerios,
+      voluntarios,
+      demandasSociais,
+      demandasCaptacao,
+      eventos,
+      grupos,
+    });
+  }
+
+  if (pathname === '/api/voluntarios/cadastro' && req.method === 'POST') {
+    const body = await readBody(req);
+    const newId = crypto.randomUUID();
+    const newProfile = {
+      id: newId,
+      church_id: MSU_ID,
+      name: body.name || 'Novo Voluntário Somos Um',
+      surname: null,
+      email: body.email || null,
+      phone: body.phone || null,
+      active: true,
+      role: 'MEMBRO',
+      is_visitor: false,
+      is_super_admin: false,
+      created_at: new Date().toISOString(),
+    };
+    db.tables.profiles.unshift(newProfile);
+
+    const ministerios = (db.tables.ministery || []).filter((m) => m.church_id === MSU_ID);
+    const matchedMin =
+      ministerios.find((m) => m.id === body.ministery_id || (body.ministerio && m.name.toLowerCase().includes(String(body.ministerio).toLowerCase()))) ||
+      ministerios[0];
+
+    if (matchedMin) {
+      db.tables.user_ministery.push({
+        id: crypto.randomUUID(),
+        user_id: newId,
+        ministery_id: matchedMin.id,
+        church_id: MSU_ID,
+        role: body.funcao || 'Voluntário',
+        created_at: new Date().toISOString(),
+      });
+    }
+
+    if (body.escala_id) {
+      db.escala_extra_pessoas = db.escala_extra_pessoas || {};
+      db.escala_extra_pessoas[body.escala_id] = db.escala_extra_pessoas[body.escala_id] || [];
+      db.escala_extra_pessoas[body.escala_id].push({
+        id: `ep_${Date.now()}`,
+        pessoa_id: newId,
+        nome: newProfile.name,
+        funcao: body.funcao || matchedMin?.name || 'Voluntário',
+        status: 'CONFIRMED',
+        desde: new Date().toISOString().slice(0, 10),
+      });
+    }
+
+    db.tables.captacao.unshift({
+      id: crypto.randomUUID(),
+      church_id: MSU_ID,
+      type: 'MEMBER',
+      name: newProfile.name,
+      email: newProfile.email,
+      phone: newProfile.phone,
+      prayer_request: `Voluntário disponível (${body.disponibilidade || ' Domingos e Quartas'}) · Ministério: ${matchedMin?.name || body.ministerio || 'Geral'}`,
+      how_found: 'Portal de Voluntários SomosSistem',
+      custom_answers: { ministerio: matchedMin?.name || body.ministerio || 'Geral', funcao: body.funcao || 'Voluntário', disponibilidade: body.disponibilidade || 'Integral' },
+      status: 'ATENDIDO',
+      created_at: new Date().toISOString(),
+    });
+
+    persistDb();
+    return sendJson(res, 200, { ok: true, id: newId, volunteer: newProfile, ministery: matchedMin?.name || 'Geral' });
+  }
+
+  if (pathname === '/api/voluntarios/demanda' && req.method === 'POST') {
+    const body = await readBody(req);
+    const kind = body.kind || 'social';
+    if (kind === 'social') {
+      const item = (db.tables.social_request || []).find((r) => r.id === body.id);
+      if (item) {
+        item.status = body.status || 'APROVADO';
+        item.updated_at = new Date().toISOString();
+      }
+    } else {
+      const item = (db.tables.captacao || []).find((c) => c.id === body.id);
+      if (item) {
+        item.status = body.status || 'ATENDIDO';
+      }
+    }
+    persistDb();
+    return sendJson(res, 200, { ok: true });
+  }
+
+  if (pathname === '/api/ajuda' && req.method === 'POST') {
+    const body = await readBody(req);
+    const tipo = body.tipo || 'ORACAO';
+    if (tipo === 'SOCIAL' || tipo === 'CESTA') {
+      const reqItem = {
+        id: crypto.randomUUID(),
+        church_id: MSU_ID,
+        requester_name: body.name || 'Solicitante Comunidade',
+        requester_phone: body.phone || '',
+        description: body.description || body.request || 'Solicitação de apoio social / cesta básica Fé com Pão',
+        family_size: Number(body.family_size || 3),
+        urgency: body.urgency || 'ALTA',
+        status: 'PENDENTE',
+        source: 'PORTAL_COMUNIDADE',
+        created_at: new Date().toISOString(),
+      };
+      db.tables.social_request.unshift(reqItem);
+      persistDb();
+      return sendJson(res, 200, { ok: true, id: reqItem.id, tipo: 'SOCIAL' });
+    }
+    const row = {
+      id: crypto.randomUUID(),
+      church_id: MSU_ID,
+      type: tipo === 'VISITA' ? 'VISITOR' : 'PRAYER',
+      name: body.name || 'Comunidade Somos Um',
+      email: body.email || null,
+      phone: body.phone || null,
+      prayer_request: body.request || body.description || 'Pedido de apoio/oração enviado pelo Portal',
+      how_found: body.how_found || 'Portal Comunidade',
+      custom_answers: body.custom_answers || {},
+      status: 'NOVO',
+      created_at: new Date().toISOString(),
+    };
+    db.tables.captacao.unshift(row);
+    persistDb();
+    return sendJson(res, 200, { ok: true, id: row.id, tipo });
   }
 
   // 3. Finanças Cotação (/api/financas/cotacao)
@@ -1289,6 +1490,11 @@ async function handleApi(req, res, pathname, searchParams) {
         splash_url: ch?.splash_url || '/assets/logo-somos-um.png',
         primary_color: ch?.primary_color || '#BF1F2C',
         secondary_color: ch?.secondary_color || '#0D3640',
+        theme: {
+          primary: '#BF1F2C',
+          secondary: '#0D3640',
+          background: '#FAFAF7',
+        },
         pix_key: ch?.pix_key || '46328262000180',
       },
       events,
@@ -1592,8 +1798,15 @@ const server = http.createServer(async (req, res) => {
       return serveFile(res, path.join(LOJA_PAGES_DIR, 'produto__placa.html'));
     }
 
-    // 6. Marketing Site (/site)
-    if (pathname === '/site' || pathname === '/site/') {
+    // 6. Portal Integrado Comunidade & Voluntários (/site, /voluntarios, /comunidade)
+    if (
+      pathname === '/site' ||
+      pathname === '/site/' ||
+      pathname === '/voluntarios' ||
+      pathname === '/voluntarios/' ||
+      pathname === '/comunidade' ||
+      pathname === '/comunidade/'
+    ) {
       return serveFile(res, path.join(PAGES_DIR, 'landing.html'));
     }
 
